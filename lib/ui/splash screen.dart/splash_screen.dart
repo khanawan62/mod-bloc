@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mod_bloc/ui/splash%20screen.dart/connection_cubit.dart';
 import 'package:mod_bloc/ui/splash%20screen.dart/connection_state.dart';
+import 'package:mod_bloc/utils/app_size.dart';
 import 'package:mod_bloc/utils/routes.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -16,8 +17,14 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
-
     super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    AppSize.screenHeight = MediaQuery.of(context).size.height;
+    AppSize.screenWidth = MediaQuery.of(context).size.width;
+    super.didChangeDependencies();
   }
 
   @override
@@ -35,7 +42,7 @@ class _SplashScreenState extends State<SplashScreen> {
         }, listener: (context, state) {
           if (state is HasConnectionState) {
             context.read<ConnectionCubit>().close();
-            Routes.pushNamedAndReplace(Routes.audioScreen, context);
+            Routes.pushNamedAndReplace(Routes.index, context);
           }
           if (state is ConnectionTimedOutState) {
             context.read<ConnectionCubit>().close();

@@ -1,14 +1,20 @@
 import 'package:flutter/cupertino.dart';
+import 'package:mod_bloc/ui/home_screen.dart';
 import 'package:mod_bloc/ui/splash%20screen.dart/splash_screen.dart';
 import 'package:mod_bloc/ui/thumbnails/thumbnails_screen.dart';
 import '../ui/audio/audio_screen.dart';
 import '../ui/movies/movies_screen.dart';
 
 class Routes {
+  ///since splash screen is the first screen 
+  ///we want to open, this is why home screen
+  ///is moved under index name 
   static const String home = "/";
   static const String audioScreen = "/audioScreen";
   static const String movieScreen = "/moviesScreen";
   static const String thumbnailsScreen = "/thumbnailsScreen";
+  static const String index = "/home";
+  
 
   static pushNamed(String routeName, BuildContext context) {
     Navigator.pushNamed(context, routeName);
@@ -29,6 +35,9 @@ class Routes {
       case home:
         return CupertinoPageRoute(
             builder: (_) => const SplashScreen(), settings: settings);
+      case index:
+        return CupertinoPageRoute(
+            builder: (_) => const HomeScreen(), settings: settings);
       case movieScreen:
         return CupertinoPageRoute(
             builder: (_) => const MoviesScreen(), settings: settings);

@@ -1,5 +1,5 @@
 import 'dart:convert';
-import '../../utils/Constants.dart';
+import '../../utils/constants.dart';
 import 'package:http/http.dart' as http;
 import '../models/thumbnail.dart';
 

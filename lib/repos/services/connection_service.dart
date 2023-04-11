@@ -1,6 +1,6 @@
 import 'package:http/http.dart' as http;
 
-import '../../utils/Constants.dart';
+import '../../utils/constants.dart';
 
 class ConnectionService {
   Future<bool> hasConnection() async {

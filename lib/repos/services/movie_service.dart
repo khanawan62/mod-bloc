@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:mod_bloc/repos/models/movie_ui_model.dart';
-import 'package:mod_bloc/utils/Constants.dart';
+import 'package:mod_bloc/utils/constants.dart';
 
 class MovieService {
   Future<List<MovieUIModel>> getMoviesUIModel() async {
