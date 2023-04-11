@@ -1,4 +1,3 @@
-
 class Constants {
   static String ip = "192.168.100.10";
   static String thumbnailPort = "3000";

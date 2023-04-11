@@ -6,6 +6,8 @@ import '../../repos/models/movie_ui_model.dart';
 import '../../repos/services/movie_service.dart';
 
 class MoviesBloc extends Bloc<MovieEvent, MoviesState> {
+  ///this class is not used anywhere yet
+  ///it is only left for reference
   final MovieService _movieService = MovieService();
   MoviesBloc() : super (MoviesInitState()) {
 

@@ -1,21 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mod_bloc/ui/thumbnails/thumbnails_cubit.dart';
-import 'package:mod_bloc/ui/thumbnails/thumbnails_screen.dart';
-
 import '../../repos/models/genre.dart';
 import '../../utils/routes.dart';
 import '../shared/see_all_button.dart';
+import '../thumbnails/thumbnails_cubit.dart';
+import '../thumbnails/thumbnails_screen.dart';
 
 class GenreList extends StatelessWidget {
-  final String industry;
+   final String industry;
   final List<Genre> genres;
-  const GenreList({
-    super.key,
-    required this.industry,
-    required this.genres,
-  });
+  const GenreList({super.key, required this.industry, required this.genres});
 
   @override
   Widget build(BuildContext context) {
@@ -46,8 +41,8 @@ class GenreList extends StatelessWidget {
                 return GestureDetector(
                   onTap: () {
                     context.read<ThumbnailsCubit>().onPressedGenre(
-                        endPoint: "movieThumbnails",
-                        category: "movies",
+                        endPoint: "audioThumbnails",
+                        category: "audio",
                         industry: industry,
                         genre: genres[idx].title);
                     Routes.pushNamed(Routes.thumbnailsScreen, context);
