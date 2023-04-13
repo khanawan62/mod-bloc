@@ -7,6 +7,10 @@ import '../../utils/time_formatt.dart';
 import 'audio_player_bloc.dart';
 
 class CurrentTime extends StatelessWidget {
+  ///this widget is just a stream builder
+  ///which returns a the text widget 
+  ///showing the current time of the song being played. 
+  ///It is called/used in timers_row widget
   const CurrentTime({super.key});
 
   @override

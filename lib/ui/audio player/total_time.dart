@@ -7,14 +7,19 @@ import '../../utils/time_formatt.dart';
 import 'audio_player_bloc.dart';
 
 class TotalTime extends StatelessWidget {
+   ///this widget is just a stream builder
+  ///which returns a the text widget 
+  ///showing the total time (overall length) of the song being played. 
+  ///It is called/used in timers_row widget
   const TotalTime({super.key});
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<Duration>(
-        stream: context.read<AudioPlayerBloc>().getTrackTotalLen(),
+        stream: context.read<AudioPlayerBloc>().getTotatTimeStream(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.active) {
+            context.read <AudioPlayerBloc> ().totalTime = snapshot.data!;
             return Text(TimeFormatt.formatDuration(snapshot.data!),
                 style: const TextStyle(fontSize: 18, color: Colors.white));
           }

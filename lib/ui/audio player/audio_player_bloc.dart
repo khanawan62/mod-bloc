@@ -9,8 +9,18 @@ import '../../utils/network_constants.dart';
 
 class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
   final AudioPlayer _audioplayer = AudioPlayer();
-  // late StreamSubscription _streamSubscription;
-  late Duration currentTime;
+  AudioPlayer get audioPlayer => _audioplayer;
+  late StreamSubscription onCompleteStream;
+
+  ///above audioPlayer getter is needed
+  ///as we have to set the release mode
+  ///to loop and stop inside the title_and_btn_row widget
+  Duration totalTime = Duration();
+
+  ///above totalTime gets its value from
+  ///stream builder of total_time widget
+  ///and is used at the max property of Slider.adaptive
+  ///inside the audio_progress_slider widget
   List<String> _thumbnails = [];
 
   ///_thumbnails list is needed
@@ -22,23 +32,50 @@ class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
   ///_urlSourceList is filled with song urls
   ///image extensions are replaced with mp3 extension
   ///using different string methods
+  ///in OnInitEvent
   int _passedIndex = 0;
 
   ///_passedIndex is needed
   ///as it is called in onPressedNext
   ///and is passed (emitted) to AudioPlayerLoadedState
-  ///to change the thumbnail of the song accordingly
+  ///to change the url which eventaully
+  ///chages thubnail and the song accordingly
+  void nextPressed() async {
+    ///not only does it play the next track,
+    ///it also changes the song thumbnail by
+    ///emitting states
+    if (_passedIndex < _urlSourceList.length - 1) {
+      ///this if will guard from going list indices beyond list range
+      emit(AudioPlayerLoadingState());
+      _passedIndex++;
+      await _audioplayer.play(UrlSource(_urlSourceList[_passedIndex]));
+      emit(AudioPlayerLoadedState(
+          thumbnailURLs: _thumbnails, passedIndex: _passedIndex));
+      emit(AudioPlayerPlayingState());
+    }
+  }
+
+  onTrackCompleted() {
+    ///this function listens to the stream
+    ///and auto plays the next song upong
+    ///ending
+    onCompleteStream = audioPlayer.onPlayerComplete.listen((event) {
+      nextPressed();
+    });
+  }
 
   AudioPlayerBloc() : super(AudioPlayerInitState()) {
+    onTrackCompleted();
     on<OnInitEvent>((event, emit) {
       ///this function is called/invoked at/in thumbnails screen
-      ///and sets the thumbnail urls (with image extensions)
-      ///using string methods and concatenation, we fill _urlSourceList with
+      ///and sets the thumbnail urls (with image extensions).
+      ///Using string methods and concatenation, we fill _urlSourceList with
       ///complete urls to play the audio files
       emit(AudioPlayerPlayingState());
 
       ///without the above line, play pause
-      ///button will take time to get built on audio player screen
+      ///button will take time to get built when
+      /// audio player screen is loaded
       emit(AudioPlayerLoadingState());
       for (String i in event.thumbnails) {
         _urlSourceList.add(
@@ -66,18 +103,7 @@ class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
     });
 
     on<OnPressedNext>((event, emit) async {
-      ///not only does it play the next track,
-      ///it also changes the song thumbnail by
-      ///emitting states
-      if (_passedIndex < _urlSourceList.length - 1) {
-        ///this if will guard from going list indices beyond list range
-        emit(AudioPlayerLoadingState());
-        _passedIndex++;
-        await _audioplayer.play(UrlSource(_urlSourceList[_passedIndex]));
-        emit(AudioPlayerLoadedState(
-            thumbnailURLs: _thumbnails, passedIndex: _passedIndex));
-        emit(AudioPlayerPlayingState());
-      }
+      nextPressed();
     });
     on<OnPressedPrevious>((event, emit) async {
       ///not only does it play the previous track,
@@ -109,10 +135,20 @@ class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
       ///they should be manually get reset
     });
   }
-   Stream<Duration> getCurrentTimeStream() {
+  Stream<Duration> getCurrentTimeStream() {
+    ///this stream function is used in stream builder
+    ///of the current_time widget
     return _audioplayer.onPositionChanged;
   }
-  Stream<Duration> getTrackTotalLen() {
+
+  Stream<Duration> getTotatTimeStream() {
+    ///this stream function is used in stream builder
+    ///of the total_time widget
     return _audioplayer.onDurationChanged;
+  }
+  @override
+  Future<void> close() {
+    onCompleteStream.cancel();
+    return super.close();
   }
 }

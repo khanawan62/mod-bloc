@@ -14,7 +14,7 @@ class ThumbnailsLoadingState extends ThumbnailsState {
 
 class ThumbnailsLoadedState extends ThumbnailsState {
   final List<String> thumbnails;
-  final String screen;
+  final String screen; //could've named as 'previousScreen' though
   ///screen variable is used to distinguish which screen
   ///thumbnails screen was opened from.
   ///Whether from audio screen or movies screen or any other screen

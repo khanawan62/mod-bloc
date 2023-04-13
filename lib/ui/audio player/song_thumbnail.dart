@@ -19,6 +19,8 @@ class SongThumbnail extends StatelessWidget {
         if (current is AudioPlayerLoadedState) {
           return true;
         }
+        ///above if condition will gaurd 
+        ///the unwanted rebuild
         return false;
       },
         builder: (context, state) {
