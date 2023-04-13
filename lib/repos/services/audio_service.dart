@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:mod_bloc/utils/constants.dart';
+import 'package:mod_bloc/utils/network_constants.dart';
 
 import '../models/audio_ui_model.dart';
 

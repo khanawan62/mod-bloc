@@ -14,7 +14,13 @@ class ThumbnailsLoadingState extends ThumbnailsState {
 
 class ThumbnailsLoadedState extends ThumbnailsState {
   final List<String> thumbnails;
-  ThumbnailsLoadedState({required this.thumbnails});
+  final String screen;
+  ///screen variable is used to distinguish which screen
+  ///thumbnails screen was opened from.
+  ///Whether from audio screen or movies screen or any other screen
+  ///and it is passed by context.read<ThumbnailsCubit>().onPressedGenre
+  ///of the genre_list widgets of movies and audio screen
+  ThumbnailsLoadedState({required this.thumbnails, required this.screen});
   @override
   List<Object?> get props => [thumbnails];
 }

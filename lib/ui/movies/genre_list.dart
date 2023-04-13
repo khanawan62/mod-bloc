@@ -49,7 +49,9 @@ class GenreList extends StatelessWidget {
                         endPoint: "movieThumbnails",
                         category: "movies",
                         industry: industry,
-                        genre: genres[idx].title);
+                        genre: genres[idx].title,
+                        screen: "moviesScreen"
+                        );
                     Routes.pushNamed(Routes.thumbnailsScreen, context);
                   },
                   child: SizedBox(

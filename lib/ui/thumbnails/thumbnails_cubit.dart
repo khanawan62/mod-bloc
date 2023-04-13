@@ -10,7 +10,9 @@ class ThumbnailsCubit extends Cubit<ThumbnailsState> {
       {required String endPoint,
       required String category,
       required String industry,
-      required String genre}) async {
+      required String genre,
+      required String screen 
+      }) async {
     try {
       emit(ThumbnailsLoadingState());
       List<String> thumbnails = await _thumbnailService.getThumbnails(
@@ -18,7 +20,7 @@ class ThumbnailsCubit extends Cubit<ThumbnailsState> {
           category: category,
           industry: industry,
           genre: genre);
-      emit(ThumbnailsLoadedState(thumbnails: thumbnails));
+      emit(ThumbnailsLoadedState(thumbnails: thumbnails, screen: screen));
     } catch (er) {
       emit(ThumbnailsErrorState());
     }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mod_bloc/utils/app_size.dart';
 import 'package:mod_bloc/utils/routes.dart';
 
 class CustomNavBar extends StatelessWidget {
@@ -26,16 +27,17 @@ class CustomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: MediaQuery.of(context).size.height / 7.8,
-        width: MediaQuery.of(context).size.width,
+        height: AppSize.screenHeight / 7.8,
+        width: AppSize.screenWidth,
         color: Colors.black,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             GestureDetector(
               onTap: () {
-                // Constants.openScreenAndRemovePreviousOnes(
-                //     context, const HomeScreen());
+                if (screen != "Home") {
+                  Routes.pushNamedAndRemoveUntil(Routes.index, context);
+                }
               },
               child: button(Icons.home, "Home",
                   screen == "Home" ? Colors.white : Colors.grey, context),

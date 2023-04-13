@@ -19,7 +19,6 @@ class CustomErrorWidget extends StatelessWidget {
           Text(errorMsg, style:  const TextStyle (color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25)),
           SizedBox(width: MediaQuery.of(context).size.width / 43),
           IconButton(onPressed: () {
-            print ("error widget tapped");
           // BlocProvider.of <MoviesBloc>(context).add(MoviErrorEvent());
           //BlocProvider.of <MoviesCubit>(context).getMoviesUI();
           context.read <MoviesCubit> ().getMoviesUI();

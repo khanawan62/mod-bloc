@@ -6,9 +6,9 @@ import '../../repos/services/audio_service.dart';
 class AudioCubit extends Cubit<AudioState> {
   final AudioService _audioService = AudioService();
   AudioCubit() : super(AudioInitState()) {
-    getMoviesUI();
+    getAudioUI();
   }
-  getMoviesUI() async {
+  getAudioUI() async {
     emit(AudioLoadingState());
     List<AudioUIModel> audioUIModelList = [];
     try {
