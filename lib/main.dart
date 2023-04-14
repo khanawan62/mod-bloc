@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mod_bloc/repos/services/movie_service.dart';
 import 'package:mod_bloc/ui/audio%20player/audio_player_bloc.dart';
-import 'package:mod_bloc/ui/audio%20player/audio_player_cubit.dart';
 import 'package:mod_bloc/ui/audio%20player/play_pause_cubit.dart';
 import 'package:mod_bloc/ui/audio/audio_cubit.dart';
 import 'package:mod_bloc/ui/movies/movies_cubit.dart';
 import 'package:mod_bloc/ui/splash%20screen.dart/connection_cubit.dart';
 import 'package:mod_bloc/ui/thumbnails/thumbnails_cubit.dart';
 import 'package:mod_bloc/ui/thumbnails/thumbnails_state.dart';
+import 'package:mod_bloc/ui/video%20player/video_player_bloc.dart';
 import 'package:mod_bloc/utils/routes.dart';
 
 void main() {
@@ -29,6 +29,10 @@ void main() {
           BlocProvider<AudioPlayerBloc>(
             create: (BuildContext context) =>
                 AudioPlayerBloc(),
+          ),
+          BlocProvider<VideoPlayerBloc>(
+            create: (BuildContext context) =>
+                VideoPlayerBloc(),
           ),
           BlocProvider<PlayPauseCubit>(
             create: (BuildContext context) =>

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mod_bloc/ui/audio%20player/audio_player_bloc.dart';
-import 'package:mod_bloc/ui/audio%20player/audio_player_cubit.dart';
 import 'package:mod_bloc/ui/audio%20player/audio_player_event.dart';
 import 'package:mod_bloc/ui/audio%20player/audio_player_state.dart';
 import 'package:mod_bloc/ui/shared/background_gradient.dart';
@@ -10,6 +9,8 @@ import 'package:mod_bloc/ui/shared/custom_error_widget.dart';
 import 'package:mod_bloc/ui/shared/custom_spinner.dart';
 import 'package:mod_bloc/ui/thumbnails/thumbnails_cubit.dart';
 import 'package:mod_bloc/ui/thumbnails/thumbnails_state.dart';
+import 'package:mod_bloc/ui/video%20player/video_player_bloc.dart';
+import 'package:mod_bloc/ui/video%20player/video_player_event.dart';
 import 'package:mod_bloc/utils/routes.dart';
 
 class ThumbnailsScreen extends StatelessWidget {
@@ -38,11 +39,14 @@ class ThumbnailsScreen extends StatelessWidget {
                   return GestureDetector(
                     onTap: () {
                       if (state.screen == "audioScreen") {
-                        context.read <AudioPlayerBloc> ().add(OnInitEvent(thumbnails: state.thumbnails, passedIndex: index));
+                        context.read<AudioPlayerBloc>().add(OnInitEvent(
+                            thumbnails: state.thumbnails, passedIndex: index));
                         Routes.pushNamed(Routes.audioPlayerScreen, context);
                       }
                       if (state.screen == "moviesScreen") {
-                        ///implement video player logic here in future
+                        context.read<VideoPlayerBloc>().add(Init(
+                            thumbnails: state.thumbnails, passedIndex: index));
+                        Routes.pushNamed(Routes.videoPlayerScreen, context);
                       }
                     },
                     child: Image.network(

@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mod_bloc/ui/audio%20player/audio_player_cubit.dart';
 import 'package:mod_bloc/ui/audio%20player/audio_player_state.dart';
 import 'package:mod_bloc/ui/shared/custom_spinner.dart';
 import 'package:mod_bloc/utils/app_size.dart';

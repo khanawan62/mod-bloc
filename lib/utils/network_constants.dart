@@ -4,4 +4,5 @@ class Constants {
   static String staticContentPort = "3001";
   static String baseUrl = "http://$ip:$thumbnailPort";
   static String audioBaseUrl = "http://$ip:$staticContentPort/audio";
+  static String videoBaseUrl = "http://$ip:$staticContentPort/videos";
 }

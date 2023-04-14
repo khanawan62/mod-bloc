@@ -38,10 +38,13 @@ class AudioPlayerPauseState extends AudioPlayerState {
   List<Object?> get props => [];
 }
 
-class AudioPlayerTimerState extends AudioPlayerState {
-  final Duration currentTime;
-  AudioPlayerTimerState ({required this.currentTime});
-  @override
-  List<Object?> get props => [currentTime];
+// class AudioPlayerTimerState extends AudioPlayerState {
+//   final Duration currentTime;
+//   AudioPlayerTimerState ({required this.currentTime});
+//   @override
+//   List<Object?> get props => [currentTime];
 
-}
+// }
+
+///above commented class is not 
+///being used anywhere

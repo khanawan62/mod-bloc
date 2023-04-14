@@ -5,6 +5,7 @@ import 'package:mod_bloc/ui/thumbnails/thumbnails_screen.dart';
 import '../ui/audio player/audio_player_screen.dart';
 import '../ui/audio/audio_screen.dart';
 import '../ui/movies/movies_screen.dart';
+import '../ui/video player/video_player_screen.dart';
 
 class Routes {
   ///since splash screen is the first screen
@@ -15,6 +16,7 @@ class Routes {
   static const String movieScreen = "/moviesScreen";
   static const String thumbnailsScreen = "/thumbnailsScreen";
   static const String audioPlayerScreen = "/audioPlayerScreen";
+  static const String videoPlayerScreen = "/videoPlayerScreen";
   static const String index = "/home";
 
   static pushNamed(String routeName, BuildContext context) {
@@ -58,6 +60,9 @@ class Routes {
       case audioPlayerScreen:
         return CupertinoPageRoute(
             builder: (_) => const AudioPlayerScreen(), settings: settings);
+      case videoPlayerScreen:
+        return CupertinoPageRoute(
+            builder: (_) => const VideoPlayerScreen(), settings: settings);
     }
   }
 }
