@@ -11,12 +11,21 @@ class TestBloc extends Bloc<TestEvent, TestState> {
   VideoPlayerController get videoPlayerController => _videoPlayerController;
   int idx = 0;
   double currentPosition = 0;
+  Duration currentPositionInDuration = Duration.zero;
+  Duration totalDurationInDuration = Duration.zero;
   double totalDuration = 0;
   List<String> urls = [
     "http://192.168.100.5:3001/videos/Greenland.mp4",
     "http://192.168.100.5:3001/videos/Safety.mp4",
     "http://192.168.100.5:3001/videos/Unhinged.mp4",
   ];
+
+  updateTimes() {
+    currentPositionInDuration = videoPlayerController.value.position;
+    totalDurationInDuration = videoPlayerController.value.duration;
+    emit(TestUpdateTimesState(controller: _videoPlayerController));
+
+  }
 
   initializeController() {
     emit(TestLoadingState());
@@ -32,12 +41,13 @@ class TestBloc extends Bloc<TestEvent, TestState> {
             emit(TestPausedState(controller: _videoPlayerController));
           }
           if (_videoPlayerController.value.isBuffering) {
-            emit(TestBufferingState(controller: _videoPlayerController));
+           emit(TestBufferingState(controller: _videoPlayerController));
           }
           currentPosition =
               _videoPlayerController.value.position.inSeconds.toDouble();
           totalDuration =
               _videoPlayerController.value.duration.inSeconds.toDouble();
+              updateTimes();
           if (currentPosition == totalDuration) {
             autoLoadNextVideo();
           }

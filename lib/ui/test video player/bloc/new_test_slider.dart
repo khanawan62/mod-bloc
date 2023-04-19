@@ -18,9 +18,8 @@ class NewTestSlider extends StatelessWidget {
         min: 0.0,
         activeColor: Colors.red,
         inactiveColor: Colors.white,
-        value: testBloc.currentPosition, //without ternary it was causing error
-        max: testBloc.totalDuration +
-            2, //adding 2 will stop the slider error
+        value: testBloc.currentPosition,
+        max: testBloc.totalDuration,
         onChangeStart: (value) {
           testBloc.add(TestPausedEvent());
           context.read<NewcontrolsBloc>().add(HideNewControlsAfterDelay());

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mod_bloc/ui/shared/custom_spinner.dart';
 import 'package:mod_bloc/ui/test%20video%20player/bloc/newcontrols_bloc.dart';
 import 'package:mod_bloc/ui/test%20video%20player/bloc/test_bloc.dart';
-import 'package:mod_bloc/ui/test%20video%20player/test_button.dart';
+import 'package:mod_bloc/ui/test%20video%20player/controls.dart';
 import 'package:mod_bloc/utils/app_size.dart';
 import 'package:video_player/video_player.dart';
 
@@ -49,7 +49,7 @@ class _TestVideoPlayerScreenState extends State<TestVideoPlayerScreen> {
                     alignment: Alignment.center,
                     children: [
                       VideoPlayer(state.controller),
-                      TestButton(controller: state.controller)
+                      Controls(controller: state.controller)
                     ],
                   );
                 }
@@ -58,7 +58,7 @@ class _TestVideoPlayerScreenState extends State<TestVideoPlayerScreen> {
                     alignment: Alignment.center,
                     children: [
                       VideoPlayer(state.controller),
-                      TestButton(controller: state.controller)
+                      Controls(controller: state.controller)
                     ],
                   );
                 }
@@ -67,7 +67,7 @@ class _TestVideoPlayerScreenState extends State<TestVideoPlayerScreen> {
                     alignment: Alignment.center,
                     children: [
                       VideoPlayer(state.controller),
-                      TestButton(controller: state.controller)
+                      Controls(controller: state.controller)
                     ],
                   );
                 }
@@ -76,7 +76,16 @@ class _TestVideoPlayerScreenState extends State<TestVideoPlayerScreen> {
                     alignment: Alignment.center,
                     children: [
                       VideoPlayer(state.controller),
-                      TestButton(controller: state.controller)
+                      Controls(controller: state.controller)
+                    ],
+                  );
+                }
+                if (state is TestUpdateTimesState) {
+                  return Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      VideoPlayer(state.controller),
+                      Controls(controller: state.controller)
                     ],
                   );
                 }

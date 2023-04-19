@@ -45,7 +45,7 @@ void main() {
             create: (BuildContext context) =>
                 NewcontrolsBloc(),
           ),
-          BlocProvider<PlayPauseCubit>(
+          BlocProvider<PlayPauseCubit>( //this is redundant and should be removed
             create: (BuildContext context) =>
                 PlayPauseCubit(),
           ),

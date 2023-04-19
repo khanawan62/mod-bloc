@@ -39,3 +39,7 @@ class TestLoadedState extends TestState {
   final VideoPlayerController controller;
   const TestLoadedState({required this.controller});
 }
+class TestUpdateTimesState extends TestState {
+  final VideoPlayerController controller;
+  const TestUpdateTimesState({required this.controller});
+}
