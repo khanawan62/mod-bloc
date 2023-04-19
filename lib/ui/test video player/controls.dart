@@ -13,6 +13,7 @@ class Controls extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return BlocBuilder<NewcontrolsBloc, NewcontrolsState>(
         builder: (context, state) {
       if (state is NewcontrolsHideState) {

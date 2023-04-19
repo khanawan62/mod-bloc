@@ -50,6 +50,8 @@ void main() {
                 PlayPauseCubit(),
           ),
         ],
-        child: const MaterialApp(onGenerateRoute: Routes.generateRoutes),
+        child: const MaterialApp(
+          debugShowCheckedModeBanner: false,
+          onGenerateRoute: Routes.generateRoutes),
       )));
 }

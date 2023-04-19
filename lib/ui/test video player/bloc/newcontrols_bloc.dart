@@ -24,7 +24,7 @@ class NewcontrolsBloc extends Bloc<NewcontrolsEvent, NewcontrolsState> {
   }
 
   startTimer() {
-    hideTimer = Timer(const Duration(seconds: 14), () {
+    hideTimer = Timer(const Duration(seconds: 5), () {
       emit(NewcontrolsHideState());
       resetTimer();
     });
