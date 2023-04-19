@@ -34,6 +34,10 @@ class TestPausedState extends TestState {
 }
 
 class TestLoadingState extends TestState {}
+class TestErrorState extends TestState {
+  final String errorMsg;
+  const TestErrorState ({required this.errorMsg});
+}
 
 class TestLoadedState extends TestState {
   final VideoPlayerController controller;

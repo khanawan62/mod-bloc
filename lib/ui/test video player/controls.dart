@@ -9,6 +9,13 @@ import 'bloc/new_test_slider.dart';
 
 class Controls extends StatelessWidget {
   final VideoPlayerController controller;
+  ///Controls widget doesn't need the above
+  ///controller. Controller will be passed
+  ///to TimersRow and Slider
+  ///Controls widget is a column containing Spacers
+  ///for spacing and TimersRow and ButtonsRow
+  ///The whole column is wrapped with ControlsBlocBuilder
+  ///to hide and show the controls
   const Controls({super.key, required this.controller});
 
   @override
@@ -23,7 +30,7 @@ class Controls extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           const Spacer(),
-          TestButton(controller: controller),
+          ButtonsRow(controller: controller),
           const Spacer(),
           TimersRow(controller: controller),
           NewTestSlider(controller: controller),

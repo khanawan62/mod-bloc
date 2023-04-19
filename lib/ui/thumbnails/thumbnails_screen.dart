@@ -13,6 +13,8 @@ import 'package:mod_bloc/ui/video%20player/video_player_bloc.dart';
 import 'package:mod_bloc/ui/video%20player/video_player_event.dart';
 import 'package:mod_bloc/utils/routes.dart';
 
+import '../test video player/bloc/test_bloc.dart';
+
 class ThumbnailsScreen extends StatelessWidget {
   const ThumbnailsScreen({super.key});
 
@@ -44,9 +46,10 @@ class ThumbnailsScreen extends StatelessWidget {
                         Routes.pushNamed(Routes.audioPlayerScreen, context);
                       }
                       if (state.screen == "moviesScreen") {
-                        context.read<VideoPlayerBloc>().add(Init(
-                            thumbnails: state.thumbnails, passedIndex: index));
-                        Routes.pushNamed(Routes.videoPlayerScreen, context);
+                        // context.read<VideoPlayerBloc>().add(Init(
+                        //     thumbnails: state.thumbnails, passedIndex: index));
+                        context.read<TestBloc>().add(TestInitEvent(thumbnailUrls: state.thumbnails, passedIndex: index));
+                        Routes.pushNamed(Routes.testVideoPlayerScreen, context);
                       }
                     },
                     child: Image.network(

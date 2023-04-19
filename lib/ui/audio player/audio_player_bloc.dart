@@ -79,7 +79,7 @@ class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
       emit(AudioPlayerLoadingState());
       for (String i in event.thumbnails) {
         _urlSourceList.add(
-            "${Constants.audioBaseUrl}${i.substring(42).split(".").first}.mp3");
+            "${Constants.audioBaseUrl}${i.substring(Constants.stringCutterNumber).split(".").first}.mp3");
       }
       _passedIndex = event.passedIndex;
       _thumbnails = event.thumbnails;

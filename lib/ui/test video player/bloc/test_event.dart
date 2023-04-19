@@ -7,7 +7,11 @@ abstract class TestEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class TestInitEvent extends TestEvent {}
+class TestInitEvent extends TestEvent {
+  final List <String> thumbnailUrls;
+  final int passedIndex;
+  const TestInitEvent ({required this.thumbnailUrls, required this.passedIndex});
+}
 
 class TestPlayEvent extends TestEvent {}
 

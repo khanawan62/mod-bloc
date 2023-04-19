@@ -10,15 +10,25 @@ import 'package:mod_bloc/ui/video%20player/controls/controls_state.dart';
 import 'package:video_player/video_player.dart';
 import '../../utils/app_size.dart';
 
-class TestButton extends StatefulWidget {
+class ButtonsRow extends StatefulWidget {
+  ///this widget is a row containg play, pause,
+  ///next, previous, seek video to 10 seconds
+  ///forward and backward.
+  ///If we don't provide video controller, then
+  ///we won't be able to show spinner when
+  ///a video is loading or buffering or be able
+  ///to toggle the play pause buttons
   final VideoPlayerController controller;
-  const TestButton({super.key, required this.controller});
+  const ButtonsRow({super.key, required this.controller});
 
   @override
-  State<TestButton> createState() => _TestButtonState();
+  State<ButtonsRow> createState() => _ButtonsRowState();
 }
 
-class _TestButtonState extends State<TestButton> with TickerProviderStateMixin {
+class _ButtonsRowState extends State<ButtonsRow> with TickerProviderStateMixin {
+  ///We are using the TickerProviderStateMixin for 
+  ///the animation of the 10 secnds forward and backward
+  ///buttons
   late AnimationController rotationControllerForTenSecForward;
   late AnimationController rotationControllerForTenSecBack;
   late final NewcontrolsBloc _controlsBloc = context.read<NewcontrolsBloc>();
