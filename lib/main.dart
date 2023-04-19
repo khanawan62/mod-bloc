@@ -6,8 +6,11 @@ import 'package:mod_bloc/ui/audio%20player/play_pause_cubit.dart';
 import 'package:mod_bloc/ui/audio/audio_cubit.dart';
 import 'package:mod_bloc/ui/movies/movies_cubit.dart';
 import 'package:mod_bloc/ui/splash%20screen.dart/connection_cubit.dart';
+import 'package:mod_bloc/ui/test%20video%20player/bloc/newcontrols_bloc.dart';
+import 'package:mod_bloc/ui/test%20video%20player/bloc/test_bloc.dart';
 import 'package:mod_bloc/ui/thumbnails/thumbnails_cubit.dart';
 import 'package:mod_bloc/ui/thumbnails/thumbnails_state.dart';
+import 'package:mod_bloc/ui/video%20player/controls/controls_bloc.dart';
 import 'package:mod_bloc/ui/video%20player/video_player_bloc.dart';
 import 'package:mod_bloc/utils/routes.dart';
 
@@ -33,6 +36,14 @@ void main() {
           BlocProvider<VideoPlayerBloc>(
             create: (BuildContext context) =>
                 VideoPlayerBloc(),
+          ),
+          BlocProvider<TestBloc>(
+            create: (BuildContext context) =>
+                TestBloc(),
+          ),
+          BlocProvider<NewcontrolsBloc>(
+            create: (BuildContext context) =>
+                NewcontrolsBloc(),
           ),
           BlocProvider<PlayPauseCubit>(
             create: (BuildContext context) =>

@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mod_bloc/ui/video%20player/video_player_event.dart';
@@ -8,16 +11,19 @@ import '../../utils/network_constants.dart';
 
 class VideoPlayerBloc extends Bloc<VideoPlayerEvent, VideoPlayerState> {
   final List<String> _urlSourceList = [];
+
   ///_urlSourceList is filled with video urls
   ///image extensions are replaced with mp4 extension
   ///by using different string methods
   ///inside OnInitEvent
   int _passedIndex = 0;
+
   ///this is being set by 'OnInitEvent' and
   ///used in loading next video by incrementing it
   ///and previous video by decrementing it
   late VideoPlayerController _videoPlayerController;
   VideoPlayerController get videoPlayerController => _videoPlayerController;
+
   ///above getter of the controller is needed
   ///as we have to dispose the video controller
   ///on going back from the video player screen
@@ -27,14 +33,19 @@ class VideoPlayerBloc extends Bloc<VideoPlayerEvent, VideoPlayerState> {
         _urlSourceList[_passedIndex])
       ..initialize().then((_) {
         emit(FirstFrameState(videoPlayerController: _videoPlayerController));
+
         ///without emiting this FirstFrame state,
         ///we won't be able to show starting frames
         ///and we will get to see a blank white space instead
       });
   }
 
-  Future<void> playVideo() async {
-    await _videoPlayerController.play();
+  playVideo() {
+    _videoPlayerController.play();
+  }
+
+  pauseVideo() {
+    _videoPlayerController.pause();
   }
 
   void initThenPlayThenEmitLoadedState() {
@@ -58,11 +69,11 @@ class VideoPlayerBloc extends Bloc<VideoPlayerEvent, VideoPlayerState> {
       ///that we can get with event.thumbnails and event.passed respectively.
       ///Using string methods and concatenation, we fill _urlSourceList with
       ///complete urls to play the video files
-      
+
       // emit(VideoPlayerLoadingState());
       for (String i in event.thumbnails) {
         _urlSourceList.add(
-            "${Constants.videoBaseUrl}${i.substring(42).split(".").first}.mp4");
+            "${Constants.videoBaseUrl}${i.substring(41).split(".").first}.mp4");
       }
       _passedIndex = event.passedIndex;
       initThenPlayThenEmitLoadedState();
@@ -72,10 +83,41 @@ class VideoPlayerBloc extends Bloc<VideoPlayerEvent, VideoPlayerState> {
       _passedIndex++;
       initThenPlayThenEmitLoadedState();
     });
+
+    on<PressedPrevious>((event, emit) {
+      _passedIndex--;
+      initThenPlayThenEmitLoadedState();
+    });
+
+    on<PressedPause>((event, emit) {
+      pauseVideo();
+    });
+
+    on<PressedPlay>((event, emit) {
+      playVideo();
+    });
+
+    on<PressedTenSecondsForward>((event, emit) {
+      event.rotationControllerForTenSecForward.fling();
+      Timer(const Duration(milliseconds: 200), () {
+        event.rotationControllerForTenSecForward.reverse();
+      });
+      _videoPlayerController.seekTo(
+          _videoPlayerController.value.position + const Duration(seconds: 10));
+    });
+    on<PressedTenSecondsBackward>((event, emit) {
+      event.rotationControllerForTenSecBackward.fling();
+      Timer(const Duration(milliseconds: 200), () {
+        event.rotationControllerForTenSecBackward.reverse();
+      });
+      _videoPlayerController.seekTo(
+          _videoPlayerController.value.position - const Duration(seconds: 10));
+    });
   }
   @override
   void onTransition(Transition<VideoPlayerEvent, VideoPlayerState> transition) {
-    print (transition);
+    log(transition.toString());
+    print(transition.toString());
     super.onTransition(transition);
   }
 }

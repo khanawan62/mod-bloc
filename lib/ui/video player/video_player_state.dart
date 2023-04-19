@@ -6,12 +6,16 @@ import 'package:video_player/video_player.dart';
 abstract class VideoPlayerState extends Equatable {}
 
 class VideoPlayerInitState extends VideoPlayerState {
+  int? passedIndex;
+  VideoPlayerController? videoPlayerController;
+  VideoPlayerInitState({this.passedIndex, this.videoPlayerController});
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [passedIndex, videoPlayerController];
 }
+
 class FirstFrameState extends VideoPlayerState {
   final VideoPlayerController videoPlayerController;
-  FirstFrameState ({required this.videoPlayerController});
+  FirstFrameState({required this.videoPlayerController});
   @override
   List<Object?> get props => [videoPlayerController];
 }
@@ -36,11 +40,6 @@ class VideoPlayerPlayingState extends VideoPlayerState {
 }
 
 class VideoPlayerPausedState extends VideoPlayerState {
-  @override
-  List<Object?> get props => [];
-}
-
-class VideoPlayerShowControlsState extends VideoPlayerState {
   @override
   List<Object?> get props => [];
 }

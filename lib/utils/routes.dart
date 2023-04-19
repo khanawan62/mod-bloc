@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:mod_bloc/ui/home_screen.dart';
 import 'package:mod_bloc/ui/splash%20screen.dart/splash_screen.dart';
+import 'package:mod_bloc/ui/test%20video%20player/test_video_player_screen.dart';
 import 'package:mod_bloc/ui/thumbnails/thumbnails_screen.dart';
 import '../ui/audio player/audio_player_screen.dart';
 import '../ui/audio/audio_screen.dart';
@@ -17,6 +18,7 @@ class Routes {
   static const String thumbnailsScreen = "/thumbnailsScreen";
   static const String audioPlayerScreen = "/audioPlayerScreen";
   static const String videoPlayerScreen = "/videoPlayerScreen";
+  static const String testVideoPlayerScreen = "/testVideoPlayerScreen";
   static const String index = "/home";
 
   static pushNamed(String routeName, BuildContext context) {
@@ -63,6 +65,9 @@ class Routes {
       case videoPlayerScreen:
         return CupertinoPageRoute(
             builder: (_) => const VideoPlayerScreen(), settings: settings);
+      case testVideoPlayerScreen:
+        return CupertinoPageRoute(
+            builder: (_) => const TestVideoPlayerScreen(), settings: settings);
     }
   }
 }

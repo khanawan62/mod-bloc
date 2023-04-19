@@ -1,5 +1,7 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/widgets.dart';
 
+@immutable
 abstract class VideoPlayerEvent extends Equatable {}
 
 class Init extends VideoPlayerEvent {
@@ -30,4 +32,16 @@ class PressedNext extends VideoPlayerEvent {
 class PressedPrevious extends VideoPlayerEvent {
   @override
   List<Object?> get props => [];
+}
+class PressedTenSecondsForward extends VideoPlayerEvent {
+  AnimationController rotationControllerForTenSecForward;
+  PressedTenSecondsForward ({required this.rotationControllerForTenSecForward});
+  @override
+  List<Object?> get props => [rotationControllerForTenSecForward];
+}
+class PressedTenSecondsBackward extends VideoPlayerEvent {
+  AnimationController rotationControllerForTenSecBackward;
+  PressedTenSecondsBackward ({required this.rotationControllerForTenSecBackward});
+  @override
+  List<Object?> get props => [rotationControllerForTenSecBackward];
 }
