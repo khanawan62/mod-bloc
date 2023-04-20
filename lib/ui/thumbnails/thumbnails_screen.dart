@@ -12,8 +12,6 @@ import 'package:mod_bloc/ui/thumbnails/thumbnails_state.dart';
 import 'package:mod_bloc/ui/video%20player/bloc/video_bloc.dart';
 import 'package:mod_bloc/utils/routes.dart';
 
-import '../test video player/bloc/test_bloc.dart';
-
 class ThumbnailsScreen extends StatelessWidget {
   const ThumbnailsScreen({super.key});
 

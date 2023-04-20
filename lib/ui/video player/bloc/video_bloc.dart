@@ -8,21 +8,26 @@ part 'video_event.dart';
 part 'video_state.dart';
 
 class VideoBloc extends Bloc<VideoEvent, VideoState> {
-  String get fileName => _videoUrls [_passedIndex].substring(33).split(".mp4").first;
-  ///above getter will be used to 
+  String get fileName =>
+      _videoUrls[_passedIndex].substring(33).split(".mp4").first;
+
+  ///above getter will be used to
   ///display the name of the currently played
   ///video inside the video_player_appbar widget
   final List<String> _videoUrls = [];
+
   ///we'd recieve the thumbnail urls
   ///from the inititial bloc event, which is invoked at the thumbnails screen.
   ///We'll loop through the recieved thumbnail list and replace the
   ///image extensions with mp4 extension and add the video urls to
   ///the above list
   int _passedIndex = 0;
+
   ///Recieved from the initial bloc event
   late VideoPlayerController _videoPlayerController;
+
   ///above controller will be passed to the state
-  ///and the ui will make use of this passed controller 
+  ///and the ui will make use of this passed controller
   ///in doing different (desired) things
   double currentPosition = 0;
   double totalDuration = 0;
@@ -40,10 +45,16 @@ class VideoBloc extends Bloc<VideoEvent, VideoState> {
 
   initializeController() {
     emit(VideoLoading());
+
+    ///above line will help show spinner
+    ///when the controller is getting intitialized
     _videoPlayerController =
         VideoPlayerController.network(_videoUrls[_passedIndex])
           ..initialize().then((_) {
             emit(VideoLoaded(controller: _videoPlayerController));
+
+            ///above line will help stop the rotating spinner
+            ///when the controller was getting intitialized
           })
           ..addListener(() {
             ///if we don't add listener here, like we have here,

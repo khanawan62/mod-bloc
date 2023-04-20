@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mod_bloc/ui/test%20video%20player/bloc/newcontrols_bloc.dart';
-import 'package:mod_bloc/ui/test%20video%20player/bloc/test_bloc.dart';
 import 'package:mod_bloc/ui/video%20player/bloc/video_bloc.dart';
 import 'package:mod_bloc/ui/video%20player/controls/bloc/controls_bloc.dart';
 import 'package:mod_bloc/utils/app_size.dart';
