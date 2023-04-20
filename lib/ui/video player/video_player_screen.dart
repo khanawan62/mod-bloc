@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mod_bloc/ui/video%20player/bloc/video_bloc.dart';
 import 'package:mod_bloc/ui/video%20player/controls/bloc/controls_bloc.dart';
+import 'package:mod_bloc/ui/video%20player/controls/widgets/video_player_appbar.dart';
 import 'package:mod_bloc/utils/app_size.dart';
-import '../shared/custom_app_bar.dart';
 import '../shared/custom_error_widget.dart';
 import '../shared/custom_spinner.dart';
 import 'controls/widgets/video_and_controls_stack.dart';
@@ -40,7 +40,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
       },
       child: Scaffold(
         extendBodyBehindAppBar: true,
-        appBar: const CustomAppBar(title: "hello"),
+        appBar: const VideoPlayerAppbar(),
         backgroundColor: Colors.black,
         body: GestureDetector(
           onTap: () {

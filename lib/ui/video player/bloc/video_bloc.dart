@@ -9,6 +9,7 @@ part 'video_state.dart';
 
 class VideoBloc extends Bloc<VideoEvent, VideoState> {
   final List<String> _videoUrls = [];
+   String get fileName => _videoUrls [_passedIndex].substring(33).split(".mp4").first;
 
   ///we'd recieve the thumbnail urls
   ///from the inititial bloc event, which is invoked at the thumbnails screen.

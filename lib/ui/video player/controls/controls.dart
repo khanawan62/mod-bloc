@@ -6,7 +6,6 @@ import 'package:mod_bloc/ui/video%20player/controls/widgets/timers_row.dart';
 import 'package:mod_bloc/ui/video%20player/controls/widgets/video_slider.dart';
 import 'package:video_player/video_player.dart';
 
-
 class Controls extends StatelessWidget {
   final VideoPlayerController controller;
 
@@ -22,20 +21,28 @@ class Controls extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ControlsBloc, ControlsState>(builder: (context, state) {
-      if (state is ControlsHidden) {
-        return const SizedBox();
+      if (state is ControlsShown) {
+        return Container(
+          color: Colors.black26,
+          ///when the controls are shown,
+          ///the background color is slightly
+          ///set to black color to make the 
+          ///white controls look more visible
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Spacer(),
+              const SizedBox(height: 50),
+              ButtonsRow(controller: controller),
+              const Spacer(),
+              TimersRow(controller: controller),
+              VideoSlider(controller: controller),
+              const SizedBox(height: 20)
+            ],
+          ),
+        );
       }
-      return Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Spacer(),
-          ButtonsRow(controller: controller),
-          const Spacer(),
-          TimersRow(controller: controller),
-          VideoSlider(controller: controller),
-          const SizedBox(height: 20)
-        ],
-      );
+      return const SizedBox();
     });
   }
 }
