@@ -17,7 +17,7 @@ class TestPlayEvent extends TestEvent {}
 
 class TestPausedEvent extends TestEvent {}
 
-class TestToggleEvent extends TestEvent {}
+class TestToggleEvent extends TestEvent {} //not used anywhere
 
 class TestMoveEvent extends TestEvent {}
 

@@ -3,10 +3,10 @@ import 'package:mod_bloc/ui/home_screen.dart';
 import 'package:mod_bloc/ui/splash%20screen.dart/splash_screen.dart';
 import 'package:mod_bloc/ui/test%20video%20player/test_video_player_screen.dart';
 import 'package:mod_bloc/ui/thumbnails/thumbnails_screen.dart';
+import 'package:mod_bloc/ui/video%20player/video_player_screen.dart';
 import '../ui/audio player/audio_player_screen.dart';
 import '../ui/audio/audio_screen.dart';
 import '../ui/movies/movies_screen.dart';
-import '../ui/video player/video_player_screen.dart';
 
 class Routes {
   ///since splash screen is the first screen
@@ -65,9 +65,6 @@ class Routes {
       case videoPlayerScreen:
         return CupertinoPageRoute(
             builder: (_) => const VideoPlayerScreen(), settings: settings);
-      case testVideoPlayerScreen:
-        return CupertinoPageRoute(
-            builder: (_) => const TestVideoPlayerScreen(), settings: settings);
     }
   }
 }

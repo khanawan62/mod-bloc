@@ -9,8 +9,7 @@ import 'package:mod_bloc/ui/shared/custom_error_widget.dart';
 import 'package:mod_bloc/ui/shared/custom_spinner.dart';
 import 'package:mod_bloc/ui/thumbnails/thumbnails_cubit.dart';
 import 'package:mod_bloc/ui/thumbnails/thumbnails_state.dart';
-import 'package:mod_bloc/ui/video%20player/video_player_bloc.dart';
-import 'package:mod_bloc/ui/video%20player/video_player_event.dart';
+import 'package:mod_bloc/ui/video%20player/bloc/video_bloc.dart';
 import 'package:mod_bloc/utils/routes.dart';
 
 import '../test video player/bloc/test_bloc.dart';
@@ -48,8 +47,10 @@ class ThumbnailsScreen extends StatelessWidget {
                       if (state.screen == "moviesScreen") {
                         // context.read<VideoPlayerBloc>().add(Init(
                         //     thumbnails: state.thumbnails, passedIndex: index));
-                        context.read<TestBloc>().add(TestInitEvent(thumbnailUrls: state.thumbnails, passedIndex: index));
-                        Routes.pushNamed(Routes.testVideoPlayerScreen, context);
+                        context.read<VideoBloc>().add(VideoInitPressed(
+                            thumbnailUrls: state.thumbnails,
+                            passedIndex: index));
+                        Routes.pushNamed(Routes.videoPlayerScreen, context);
                       }
                     },
                     child: Image.network(

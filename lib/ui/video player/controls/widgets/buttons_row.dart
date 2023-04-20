@@ -1,11 +1,13 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:mod_bloc/ui/shared/custom_spinner.dart';
-import 'package:mod_bloc/ui/test%20video%20player/bloc/newcontrols_bloc.dart';
-import 'package:mod_bloc/ui/test%20video%20player/bloc/test_bloc.dart';
+import 'package:mod_bloc/ui/video%20player/bloc/video_bloc.dart';
+import 'package:mod_bloc/ui/video%20player/controls/bloc/controls_bloc.dart';
 import 'package:video_player/video_player.dart';
-import '../../utils/app_size.dart';
+import '../../../../utils/app_size.dart';
 
 class ButtonsRow extends StatefulWidget {
   ///this widget is a row containg play, pause,
@@ -23,13 +25,13 @@ class ButtonsRow extends StatefulWidget {
 }
 
 class _ButtonsRowState extends State<ButtonsRow> with TickerProviderStateMixin {
-  ///We are using the TickerProviderStateMixin for 
+  ///We are using the TickerProviderStateMixin for
   ///the animation of the 10 secnds forward and backward
   ///buttons
   late AnimationController rotationControllerForTenSecForward;
   late AnimationController rotationControllerForTenSecBack;
-  late final NewcontrolsBloc _controlsBloc = context.read<NewcontrolsBloc>();
-  late final TestBloc _testBloc = context.read<TestBloc>();
+  late final ControlsBloc _controlsBloc = context.read<ControlsBloc>();
+  late final VideoBloc _videoBloc = context.read<VideoBloc>();
 
   @override
   void initState() {
@@ -50,7 +52,14 @@ class _ButtonsRowState extends State<ButtonsRow> with TickerProviderStateMixin {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                _videoBloc.add(Video10SecondsBackwardPressed());
+                _controlsBloc.add(ControlsHideAfterDelayPressed());
+                rotationControllerForTenSecBack.fling();
+                Timer(const Duration(milliseconds: 200), () {
+                  rotationControllerForTenSecBack.reverse();
+                });
+              },
               child: Stack(
                 alignment: Alignment.center,
                 children: [
@@ -75,17 +84,20 @@ class _ButtonsRowState extends State<ButtonsRow> with TickerProviderStateMixin {
               ),
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                _videoBloc.add(VideoPlayPreviousPressed());
+                _controlsBloc.add(ControlsHideAfterDelayPressed());
+              },
               child: Icon(Icons.skip_previous,
                   size: AppSize.screenWidth / 32, color: Colors.white),
             ),
             GestureDetector(
               onTap: () {
-                _controlsBloc.add(HideNewControlsAfterDelay());
+                _controlsBloc.add(ControlsHideAfterDelayPressed());
                 if (widget.controller.value.isPlaying) {
-                  _testBloc.add(TestPausedEvent());
+                  _videoBloc.add(VideoPausePressed());
                 } else {
-                  _testBloc.add(TestPlayEvent());
+                  _videoBloc.add(VideoPlayPressed());
                 }
               },
               child: widget.controller.value.isBuffering
@@ -100,14 +112,21 @@ class _ButtonsRowState extends State<ButtonsRow> with TickerProviderStateMixin {
             ),
             GestureDetector(
               onTap: () {
-                _testBloc.add(TestNextEvent());
-                _controlsBloc.add(HideNewControlsAfterDelay());
+                _videoBloc.add(VideoPlayNextPressed());
+                _controlsBloc.add(ControlsHideAfterDelayPressed());
               },
               child: Icon(Icons.skip_next,
                   size: AppSize.screenWidth / 32, color: Colors.white),
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                _videoBloc.add(Video10SecondsForwardPressed());
+                _controlsBloc.add(ControlsHideAfterDelayPressed());
+                rotationControllerForTenSecForward.fling();
+                Timer(const Duration(milliseconds: 200), () {
+                  rotationControllerForTenSecForward.reverse();
+                });
+              },
               child: Stack(
                 alignment: Alignment.center,
                 children: [

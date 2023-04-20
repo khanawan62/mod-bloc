@@ -2,16 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mod_bloc/repos/services/movie_service.dart';
 import 'package:mod_bloc/ui/audio%20player/audio_player_bloc.dart';
-import 'package:mod_bloc/ui/audio%20player/play_pause_cubit.dart';
 import 'package:mod_bloc/ui/audio/audio_cubit.dart';
 import 'package:mod_bloc/ui/movies/movies_cubit.dart';
 import 'package:mod_bloc/ui/splash%20screen.dart/connection_cubit.dart';
-import 'package:mod_bloc/ui/test%20video%20player/bloc/newcontrols_bloc.dart';
-import 'package:mod_bloc/ui/test%20video%20player/bloc/test_bloc.dart';
 import 'package:mod_bloc/ui/thumbnails/thumbnails_cubit.dart';
 import 'package:mod_bloc/ui/thumbnails/thumbnails_state.dart';
-import 'package:mod_bloc/ui/video%20player/controls/controls_bloc.dart';
-import 'package:mod_bloc/ui/video%20player/video_player_bloc.dart';
+import 'package:mod_bloc/ui/video%20player/bloc/video_bloc.dart';
+import 'package:mod_bloc/ui/video%20player/controls/bloc/controls_bloc.dart';
 import 'package:mod_bloc/utils/routes.dart';
 
 void main() {
@@ -33,21 +30,13 @@ void main() {
             create: (BuildContext context) =>
                 AudioPlayerBloc(),
           ),
-          BlocProvider<VideoPlayerBloc>(
+          BlocProvider<VideoBloc>(
             create: (BuildContext context) =>
-                VideoPlayerBloc(),
+                VideoBloc(),
           ),
-          BlocProvider<TestBloc>(
+          BlocProvider<ControlsBloc>(
             create: (BuildContext context) =>
-                TestBloc(),
-          ),
-          BlocProvider<NewcontrolsBloc>(
-            create: (BuildContext context) =>
-                NewcontrolsBloc(),
-          ),
-          BlocProvider<PlayPauseCubit>( //this is redundant and should be removed
-            create: (BuildContext context) =>
-                PlayPauseCubit(),
+                ControlsBloc(),
           ),
         ],
         child: const MaterialApp(
