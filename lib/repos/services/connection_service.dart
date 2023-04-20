@@ -8,11 +8,9 @@ class ConnectionService {
       var res = await http
           .get(Uri.parse("${Constants.baseUrl}/conn"));
       if (res.statusCode == 200) {
-        print(res.statusCode);
         return true;
       }
     } catch (e) {
-      print(e.toString());
     }
     return false;
   }

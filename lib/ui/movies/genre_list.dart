@@ -2,8 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mod_bloc/ui/thumbnails/thumbnails_cubit.dart';
-import 'package:mod_bloc/ui/thumbnails/thumbnails_screen.dart';
-
 import '../../repos/models/genre.dart';
 import '../../utils/routes.dart';
 import '../shared/see_all_button.dart';

@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mod_bloc/ui/movies/movies_cubit.dart';
 
-import '../movies/movies_bloc.dart';
-import '../movies/movies_event.dart';
-
 class CustomErrorWidget extends StatelessWidget {
   final String errorMsg;
  

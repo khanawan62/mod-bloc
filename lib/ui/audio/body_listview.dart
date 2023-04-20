@@ -10,7 +10,7 @@ class BodyListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AudioCubit, AudioState>(
+    return BlocBuilder<AudioCubit, AudioState>(
             builder: ((context, state) {
               if (state is AudioLoadedState) {
                 return ListView.separated(
@@ -32,11 +32,7 @@ class BodyListView extends StatelessWidget {
                 return CustomErrorWidget(errorMsg: state.errorMsg);
               }
               return Container();
-            }),
-            listener: (context, state) {
-              print (state.toString());
-            },
-            
+            }), 
             );
   }
 }

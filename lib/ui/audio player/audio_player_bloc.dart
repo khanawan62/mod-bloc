@@ -15,7 +15,7 @@ class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
   ///above audioPlayer getter is needed
   ///as we have to set the release mode
   ///to loop and stop inside the title_and_btn_row widget
-  Duration totalTime = Duration();
+  Duration totalTime = const Duration();
 
   ///above totalTime gets its value from
   ///stream builder of total_time widget

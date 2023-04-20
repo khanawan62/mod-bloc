@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mod_bloc/ui/movies/movies_bloc.dart';
 import '../shared/custom_error_widget.dart';
 import 'genre_list.dart';
 import 'movies_cubit.dart';
-import 'movies_event.dart';
 import 'movies_state.dart';
 
 class BodyListView extends StatefulWidget {
@@ -22,7 +20,7 @@ class _BodyListViewState extends State<BodyListView> {
   }
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<MoviesCubit, MoviesState>(
+    return BlocBuilder<MoviesCubit, MoviesState>(
             builder: ((context, state) {
               if (state is MoviesLoadedState) {
                 return ListView.separated(
@@ -45,10 +43,6 @@ class _BodyListViewState extends State<BodyListView> {
               }
               return Container();
             }),
-            listener: (context, state) {
-              print (state.toString());
-            },
-            
             );
   }
 }

@@ -32,10 +32,5 @@ class MoviesBloc extends Bloc<MovieEvent, MoviesState> {
         emit(MoviesErrorState(errorMsg: er.toString()));
       }
     });
-    @override
-  void onChange(Change <MoviesState> change) {
-    super.onChange(change);
-    print(change);
-  }
   }
 }

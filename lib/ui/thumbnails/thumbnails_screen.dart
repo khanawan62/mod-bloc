@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mod_bloc/ui/audio%20player/audio_player_bloc.dart';
 import 'package:mod_bloc/ui/audio%20player/audio_player_event.dart';
-import 'package:mod_bloc/ui/audio%20player/audio_player_state.dart';
 import 'package:mod_bloc/ui/shared/background_gradient.dart';
 import 'package:mod_bloc/ui/shared/custom_app_bar.dart';
 import 'package:mod_bloc/ui/shared/custom_error_widget.dart';
@@ -43,8 +42,6 @@ class ThumbnailsScreen extends StatelessWidget {
                         Routes.pushNamed(Routes.audioPlayerScreen, context);
                       }
                       if (state.screen == "moviesScreen") {
-                        // context.read<VideoPlayerBloc>().add(Init(
-                        //     thumbnails: state.thumbnails, passedIndex: index));
                         context.read<VideoBloc>().add(VideoInitPressed(
                             thumbnailUrls: state.thumbnails,
                             passedIndex: index));
@@ -67,7 +64,6 @@ class ThumbnailsScreen extends StatelessWidget {
             }
             return Container();
           }, listener: (context, state) {
-            //print (state.toString());
           }),
         ),
       ),

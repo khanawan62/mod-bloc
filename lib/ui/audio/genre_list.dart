@@ -5,7 +5,6 @@ import '../../repos/models/genre.dart';
 import '../../utils/routes.dart';
 import '../shared/see_all_button.dart';
 import '../thumbnails/thumbnails_cubit.dart';
-import '../thumbnails/thumbnails_screen.dart';
 
 class GenreList extends StatelessWidget {
    final String industry;

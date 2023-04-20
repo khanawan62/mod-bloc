@@ -1,5 +1,4 @@
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/material.dart';
 import 'package:mod_bloc/ui/multi%20page%20menu/multi_page_menu_screen.dart';
 
 class HomeScreen extends StatelessWidget {
