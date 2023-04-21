@@ -17,6 +17,8 @@ class VideoPlayerScreen extends StatefulWidget {
 
 class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   postFrame() {
+    ///this methods helps build the first frame
+    ///in my opionin
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       setState(() {});
     });
@@ -32,6 +34,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print ("build called of video player screen");
     return WillPopScope(
       onWillPop: () async {
         context.read<VideoBloc>().releaseResources();

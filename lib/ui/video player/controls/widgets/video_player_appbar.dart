@@ -13,15 +13,24 @@ class VideoPlayerAppbar extends StatelessWidget with PreferredSizeWidget {
     return BlocBuilder<ControlsBloc, ControlsState>(
       builder: (context, state) {
         if (state is ControlsShown) {
-          return AppBar(
-            automaticallyImplyLeading: true,
-            title: Text(
-              context.watch <VideoBloc> ().fileName,
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            backgroundColor: Colors.black,
-            centerTitle: true,
-          );
+          return BlocSelector<VideoBloc, VideoState, bool>(
+              selector: (state) => state is VideoLoaded ? true : false,
+              builder: (context, state) {
+                return AppBar(
+                  automaticallyImplyLeading: true,
+                  title: Text(
+                    context.read<VideoBloc>().fileName,
+                    ///without using the bloc selector
+                    ///we would need to used context.watch instead,
+                    ///which will rebuilt the appbar whenever the controls
+                    ///state is shows
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  backgroundColor: Colors.black,
+                  centerTitle: true,
+                );
+              });
         }
         return const SizedBox();
       },
