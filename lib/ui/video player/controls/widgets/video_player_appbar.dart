@@ -13,8 +13,8 @@ class VideoPlayerAppbar extends StatelessWidget with PreferredSizeWidget {
     return BlocBuilder<ControlsBloc, ControlsState>(
       builder: (context, state) {
         if (state is ControlsShown) {
-          return BlocSelector<VideoBloc, VideoState, bool>(
-              selector: (state) => state is VideoLoaded ? true : false,
+          return BlocBuilder<VideoBloc, VideoState>(
+              buildWhen: (p, c) => c is VideoLoaded ? true : false,
               builder: (context, state) {
                 return AppBar(
                   automaticallyImplyLeading: true,
