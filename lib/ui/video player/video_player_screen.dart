@@ -49,8 +49,16 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
           child: SizedBox(
               height: AppSize.screenHeight,
               width: AppSize.screenWidth,
-              child:
-                  BlocBuilder<VideoBloc, VideoState>(builder: (context, state) {
+              child: BlocConsumer<VideoBloc, VideoState>(
+                  listener: (context, state) {
+                if (state is VideoError) {
+                  context.read<ControlsBloc>().cancelHideTimer();
+
+                  ///above line will make sure that app bar of
+                  ///video player doesn't hide when there's an
+                  ///an error in a video
+                }
+              }, builder: (context, state) {
                 if (state is VideoPlaying) {
                   return VideoAndControlsStack(controller: state.controller);
                 }
