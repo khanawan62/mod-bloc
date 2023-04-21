@@ -40,8 +40,7 @@ class ThumbnailsScreen extends StatelessWidget {
                         context.read<AudioPlayerBloc>().add(OnInitEvent(
                             thumbnails: state.thumbnails, passedIndex: index));
                         Routes.pushNamed(Routes.audioPlayerScreen, context);
-                      }
-                      if (state.screen == "moviesScreen") {
+                      } else {
                         context.read<VideoBloc>().add(VideoInitPressed(
                             thumbnailUrls: state.thumbnails,
                             passedIndex: index));

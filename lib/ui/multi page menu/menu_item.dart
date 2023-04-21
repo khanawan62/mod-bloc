@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../utils/routes.dart';
+import '../thumbnails/thumbnails_cubit.dart';
 
 class MutliPageMenuItem extends StatelessWidget {
   final String imgPath;
@@ -21,6 +23,24 @@ class MutliPageMenuItem extends StatelessWidget {
         }
         if (title == "Music") {
           Routes.pushNamed(Routes.audioScreen, context);
+        }
+        if (title == "TV Shows") {
+          context.read<ThumbnailsCubit>().onPressedGenre(
+              endPoint: "tvvvvThumbnails",
+              category: "tvShows",
+              industry: "none",
+              genre: "Tv Shows",
+              screen: "tvScreen");
+          Routes.pushNamed(Routes.thumbnailsScreen, context);
+        }
+        if (title == "Kids") {
+          context.read<ThumbnailsCubit>().onPressedGenre(
+              endPoint: "kidssThumbnails",
+              category: "kids",
+              industry: "none",
+              genre: "kids",
+              screen: "kidsScreen");
+          Routes.pushNamed(Routes.thumbnailsScreen, context);
         }
       },
       child: Padding(
