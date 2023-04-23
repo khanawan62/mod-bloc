@@ -43,6 +43,7 @@ dependencies:
   audioplayers: ^4.0.0
   video_player: ^2.6.1
   line_icons: ^2.0.1
+  percent_indicator: ^4.2.3
 
 dev_dependencies:
   flutter_test:

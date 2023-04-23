@@ -20,10 +20,10 @@ class VideoPlayerAppbar extends StatelessWidget with PreferredSizeWidget {
                   automaticallyImplyLeading: true,
                   title: Text(
                     context.read<VideoBloc>().fileName,
-                    ///without using the bloc selector
-                    ///we would need to used context.watch instead,
-                    ///which will rebuilt the appbar whenever the controls
-                    ///state is shows
+                    ///without using the blocbuilder's buildwhen property 
+                    ///we would need to use context.watch instead,
+                    ///which will rebuild the appbar whenever the controls
+                    ///state is changed to shown
                     style: const TextStyle(
                         fontSize: 20, fontWeight: FontWeight.bold),
                   ),

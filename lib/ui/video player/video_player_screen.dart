@@ -34,7 +34,6 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print ("build called of video player screen");
     return WillPopScope(
       onWillPop: () async {
         context.read<VideoBloc>().releaseResources();

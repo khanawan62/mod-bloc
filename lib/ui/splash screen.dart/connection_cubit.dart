@@ -12,14 +12,13 @@ class ConnectionCubit extends Cubit<APIConnectionState> {
   ConnectionCubit() : super(ConnnectionInitState()) {
     _streamSubscription =
         _connectionService.checkConnectionStream().listen((event) {
-          _timer ++; 
-        if (_timer == 30) {///set accordingly in future
+          _timer ++;
+          emit(ConnectingState(percentage: (_timer / 60) * 100)); 
+        if (_timer == 60) {///set accordingly in future
           emit(ConnectionTimedOutState());
           _streamSubscription?.cancel();
         }
-      if (event == false) {
-        emit(NoConnectionState());
-      } else {
+      if (event == true) {
         emit(HasConnectionState());
       }
     });

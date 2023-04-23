@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:mod_bloc/ui/file%20management/widgets/file_explorer_screen.dart';
 import 'package:mod_bloc/ui/home_screen.dart';
 import 'package:mod_bloc/ui/splash%20screen.dart/splash_screen.dart';
 import 'package:mod_bloc/ui/thumbnails/thumbnails_screen.dart';
@@ -17,6 +18,7 @@ class Routes {
   static const String thumbnailsScreen = "/thumbnailsScreen";
   static const String audioPlayerScreen = "/audioPlayerScreen";
   static const String videoPlayerScreen = "/videoPlayerScreen";
+  static const String fileExplorerScreen = "/fileExplorerScreen";
   //static const String testVideoPlayerScreen = "/testVideoPlayerScreen";
   static const String index = "/home";
 
@@ -64,6 +66,9 @@ class Routes {
       case videoPlayerScreen:
         return CupertinoPageRoute(
             builder: (_) => const VideoPlayerScreen(), settings: settings);
+      case fileExplorerScreen:
+        return CupertinoPageRoute(
+            builder: (_) => const FileExplorerScreen(), settings: settings);
     }
   }
 }
