@@ -4,6 +4,7 @@ import 'package:mod_bloc/repos/services/movie_service.dart';
 import 'package:mod_bloc/ui/audio%20player/audio_player_bloc.dart';
 import 'package:mod_bloc/ui/audio/audio_cubit.dart';
 import 'package:mod_bloc/ui/file%20management/cubit/file_explorer_cubit.dart';
+import 'package:mod_bloc/ui/file%20management/cubit/file_pick_cubit.dart';
 import 'package:mod_bloc/ui/movies/movies_cubit.dart';
 import 'package:mod_bloc/ui/splash%20screen.dart/connection_cubit.dart';
 import 'package:mod_bloc/ui/thumbnails/thumbnails_cubit.dart';
@@ -28,24 +29,23 @@ void main() {
                 ThumbnailsCubit(ThumbnailsInitState()),
           ),
           BlocProvider<AudioPlayerBloc>(
-            create: (BuildContext context) =>
-                AudioPlayerBloc(),
+            create: (BuildContext context) => AudioPlayerBloc(),
           ),
           BlocProvider<VideoBloc>(
-            create: (BuildContext context) =>
-                VideoBloc(),
+            create: (BuildContext context) => VideoBloc(),
           ),
           BlocProvider<ControlsBloc>(
-            create: (BuildContext context) =>
-                ControlsBloc(),
+            create: (BuildContext context) => ControlsBloc(),
           ),
           BlocProvider<FileExplorerCubit>(
-            create: (BuildContext context) =>
-                FileExplorerCubit(),
+            create: (BuildContext context) => FileExplorerCubit(),
+          ),
+          BlocProvider<FilePickCubit>(
+            create: (BuildContext context) => FilePickCubit(),
           ),
         ],
         child: const MaterialApp(
-          debugShowCheckedModeBanner: false,
-          onGenerateRoute: Routes.generateRoutes),
+            debugShowCheckedModeBanner: false,
+            onGenerateRoute: Routes.generateRoutes),
       )));
 }

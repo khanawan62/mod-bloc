@@ -11,10 +11,59 @@ class FileExplorerCubit extends Cubit<FileExplorerState> {
   final FileExplorerService _fileExplorerService = FileExplorerService();
   String baseUrlToGetFilesAndFolders = "${Constants.baseUrl}/getNames";
 
-  onPressedGetFilesAndFolders(String param) async {
+  onPressedGetFilesAndFolders(String optionlParams) async {
     emit(FileExplorerLoading());
-    List<String> namesOfFilesAndFolders =
-        await _fileExplorerService.getFileNames(baseUrlToGetFilesAndFolders + param);
+    List<String> namesOfFilesAndFolders = await _fileExplorerService
+        .getFileNames(baseUrlToGetFilesAndFolders + optionlParams);
     emit(FileExplorerLoaded(namesOfFilesAndFolders: namesOfFilesAndFolders));
+  }
+
+  List<String> appbarTextList = ["Home"];
+  ///above list item will be used in app bar text
+  List<String> optionalUrlParams = [
+    "?folder1=",
+    "&folder2=",
+    "&folder3=",
+    "&folder4="
+  ];
+
+  String concatenatedPath = "";
+
+  ///above concatenatedPath variable is concatenation
+  ///of optionalUrlParam with the name of the clicked
+  ///folder name. I.e ?folder1=images or ?folder1=images&folder2=movies
+  List<String> concatenatedPathList = [];
+
+  ///above concatenatedPathList contains the concatenation
+  ///of optionalUrlParam with the name of the clicked
+  ///folder name item. 
+  ///I.e [?folder1=images] or [?folder1=images, ?folder1=images&folder2=movies]
+
+  void goBack() {
+    appbarTextList.removeAt(appbarTextList.length - 1);
+
+    ///call setstate in ui while calling this function
+    /// and it will show the folder name in app bar
+    ///correctly when back button is pressed 
+    if (concatenatedPathList.length == 1) {
+      onPressedGetFilesAndFolders("");
+
+      ///when we reach the home, empty string
+      ///should be passed in above call
+      concatenatedPathList.clear();
+      concatenatedPath = "";
+
+      ///when we reach the home, we should
+      ///reset the variables to start over
+    } else {
+      concatenatedPathList.removeLast();
+      onPressedGetFilesAndFolders(
+          concatenatedPathList[concatenatedPathList.length - 1]);
+      concatenatedPath = concatenatedPathList[concatenatedPathList.length - 1];
+
+      ///above line will keep the 2nd last item
+      ///of the path list. W/O this line, the system
+      ///won't work
+    }
   }
 }
