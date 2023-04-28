@@ -7,6 +7,7 @@ import 'package:mod_bloc/ui/file%20management/cubit/file_explorer_cubit.dart';
 import 'package:mod_bloc/ui/file%20management/cubit/file_pick_cubit.dart';
 import 'package:mod_bloc/ui/file%20management/cubit/upload_cubit.dart';
 import 'package:mod_bloc/ui/movies/movies_cubit.dart';
+import 'package:mod_bloc/ui/settings/cubit/password_cubit.dart';
 import 'package:mod_bloc/ui/splash%20screen.dart/connection_cubit.dart';
 import 'package:mod_bloc/ui/thumbnails/thumbnails_cubit.dart';
 import 'package:mod_bloc/ui/thumbnails/thumbnails_state.dart';
@@ -46,6 +47,9 @@ void main() {
           ),
           BlocProvider<UploadCubit>(
             create: (BuildContext context) => UploadCubit(),
+          ),
+          BlocProvider<PasswordCubit>(
+            create: (BuildContext context) => PasswordCubit(),
           ),
         ],
         child: const MaterialApp(

@@ -79,8 +79,8 @@ class _SplashScreenState extends State<SplashScreen> {
           }, listener: (context, state) {
             if (state is HasConnectionState) {
               context.read<ConnectionCubit>().close();
-              // Routes.pushNamedAndReplace(Routes.index, context);
-              Routes.pushNamedAndReplace(Routes.fileExplorerScreen, context);
+               Routes.pushNamedAndReplace(Routes.index, context);
+             // Routes.pushNamedAndReplace(Routes.fileExplorerScreen, context);
             }
             if (state is ConnectionTimedOutState) {
               context.read<ConnectionCubit>().close();
