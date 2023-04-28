@@ -77,7 +77,7 @@ class FileExplorerCubit extends Cubit<FileExplorerState> {
 
   onPressedRemove(String filePath, String fileName) async {
     String removeURL =
-        "${Constants.baseUrl}/rm" + "?folder=$filePath/$fileName";
+        "${Constants.baseUrl}/rm?folder=$filePath/$fileName";
     var res = await http.get(Uri.parse(removeURL));
     onPressedGetFilesAndFolders(concatenatedPathList.last);
 

@@ -16,7 +16,7 @@ class ChooseFiles extends StatelessWidget {
       },
       child: DottedBorder(
           color: Colors.indigo,
-          dashPattern: [8, 4],
+          dashPattern: const [8, 4],
           strokeWidth: 2,
           child: Container(
             height: 150,
