@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:mod_bloc/repos/services/file_explorer_service.dart';
-
+import 'package:http/http.dart' as http;
 import '../../../utils/network_constants.dart';
 
 part 'file_explorer_state.dart';
@@ -26,6 +26,14 @@ class FileExplorerCubit extends Cubit<FileExplorerState> {
     "&folder3=",
     "&folder4="
   ];
+
+  String getUploadPath () {
+    String uploadPath = "";
+    for (int i = 1; i < appbarTextList.length; i++) {
+      uploadPath += "/${appbarTextList[i]}";
+    }
+    return uploadPath;
+  }
 
   String concatenatedPath = "";
 
@@ -65,5 +73,13 @@ class FileExplorerCubit extends Cubit<FileExplorerState> {
       ///of the path list. W/O this line, the system
       ///won't work
     }
+  }
+  onPressedRemove (String filePath, String fileName) async {
+    String removeURL = "${Constants.baseUrl}/rm" +
+        "?folder=$filePath/$fileName";
+    var res = await http.get(Uri.parse(removeURL));
+    onPressedGetFilesAndFolders(
+          concatenatedPathList[concatenatedPathList.length - 1]);
+          
   }
 }

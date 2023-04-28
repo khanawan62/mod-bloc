@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mod_bloc/ui/file%20management/cubit/file_explorer_cubit.dart';
 import 'package:mod_bloc/ui/file%20management/widgets/folder_widget.dart';
+import 'package:mod_bloc/ui/file%20management/widgets/remove_file_dialog.dart';
 import 'package:mod_bloc/ui/file%20management/widgets/upload_alert_dialog.dart';
 import 'package:mod_bloc/ui/shared/background_gradient.dart';
 import 'package:mod_bloc/ui/shared/custom_spinner.dart';
@@ -20,7 +21,6 @@ class _FileExplorerScreenState extends State<FileExplorerScreen> {
   void initState() {
     context.read<FileExplorerCubit>().onPressedGetFilesAndFolders("");
     _fec = context.read<FileExplorerCubit>();
-    ;
     super.initState();
   }
 
@@ -28,19 +28,18 @@ class _FileExplorerScreenState extends State<FileExplorerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.file_upload),
-          onPressed: () {
-            showDialog(
-                context: context,
-                builder: (_) => const UploadAlertDialog());
-          },
-        ),
+        child: const Icon(Icons.file_upload),
+        onPressed: () {
+          showDialog(
+              context: context, builder: (_) => const UploadAlertDialog());
+        },
+      ),
       appBar: AppBar(
         title: StatefulBuilder(builder: (context, setState) {
           return Text(_fec.appbarTextList[_fec.concatenatedPathList.length],
 
               ///since concatenatedPathList grows with button clicks
-              ///and shrinks with back button, this is why'
+              ///and shrinks with back button, this is why
               ///its length is used an an index to appbarTextList
               style:
                   const TextStyle(fontSize: 20, fontWeight: FontWeight.w700));
@@ -54,7 +53,6 @@ class _FileExplorerScreenState extends State<FileExplorerScreen> {
                   onPressed: () {
                     setState(() {
                       _fec.goBack();
-                      print (_fec.appbarTextList);
                     });
                   },
                   icon: const Icon(Icons.arrow_back))
@@ -73,7 +71,13 @@ class _FileExplorerScreenState extends State<FileExplorerScreen> {
                     List.generate(state.namesOfFilesAndFolders.length, (index) {
                   return GestureDetector(
                       onLongPress: () {
-                        
+                        if (state.namesOfFilesAndFolders[index].contains(".")) {
+                          showDialog(
+                              context: context,
+                              builder: (_) => RemoveFileDialog(
+                                  fileName:
+                                      state.namesOfFilesAndFolders[index]));
+                        }
                       },
                       onTap: () {
                         if (!state.namesOfFilesAndFolders[index]
@@ -86,7 +90,6 @@ class _FileExplorerScreenState extends State<FileExplorerScreen> {
                             _fec.appbarTextList
                                 .add(state.namesOfFilesAndFolders[index]);
                           });
-                          print (_fec.appbarTextList);
 
                           ///as we click the folder widget
                           ///we can access the folder name with state.namesOfFilesAndFolders[index]

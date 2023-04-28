@@ -13,5 +13,6 @@ class FilePickLoading extends FilePickState {}
 
 class FilePickLoaded extends FilePickState {
   final int fileCount;
-  const FilePickLoaded({required this.fileCount});
+  final List <File> files;
+  const FilePickLoaded({required this.fileCount, required this.files});
 }

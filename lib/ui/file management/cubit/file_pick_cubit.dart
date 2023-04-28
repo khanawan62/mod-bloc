@@ -17,6 +17,6 @@ class FilePickCubit extends Cubit<FilePickState> {
     if (result != null) {
       files = result.paths.map((path) => File(path.toString())).toList();
     }
-    emit(FilePickLoaded(fileCount: files.length));
+    emit(FilePickLoaded(fileCount: files.length, files: files));
   }
 }
