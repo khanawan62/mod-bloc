@@ -2,8 +2,6 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import '../../utils/network_constants.dart';
-
 class FileExplorerService {
   Future<List<String>> getFileNames(String url) async {
     List<String> fileNames = [];

@@ -19,6 +19,7 @@ class FileExplorerCubit extends Cubit<FileExplorerState> {
   }
 
   List<String> appbarTextList = ["Home"];
+
   ///above list item will be used in app bar text
   List<String> optionalUrlParams = [
     "?folder1=",
@@ -27,7 +28,7 @@ class FileExplorerCubit extends Cubit<FileExplorerState> {
     "&folder4="
   ];
 
-  String getUploadPath () {
+  String getUploadPath() {
     String uploadPath = "";
     for (int i = 1; i < appbarTextList.length; i++) {
       uploadPath += "/${appbarTextList[i]}";
@@ -44,7 +45,7 @@ class FileExplorerCubit extends Cubit<FileExplorerState> {
 
   ///above concatenatedPathList contains the concatenation
   ///of optionalUrlParam with the name of the clicked
-  ///folder name item. 
+  ///folder name item.
   ///I.e [?folder1=images] or [?folder1=images, ?folder1=images&folder2=movies]
 
   void goBack() {
@@ -52,7 +53,7 @@ class FileExplorerCubit extends Cubit<FileExplorerState> {
 
     ///call setstate in ui while calling this function
     /// and it will show the folder name in app bar
-    ///correctly when back button is pressed 
+    ///correctly when back button is pressed
     if (concatenatedPathList.length == 1) {
       onPressedGetFilesAndFolders("");
 
@@ -65,21 +66,22 @@ class FileExplorerCubit extends Cubit<FileExplorerState> {
       ///reset the variables to start over
     } else {
       concatenatedPathList.removeLast();
-      onPressedGetFilesAndFolders(
-          concatenatedPathList[concatenatedPathList.length - 1]);
-      concatenatedPath = concatenatedPathList[concatenatedPathList.length - 1];
+      onPressedGetFilesAndFolders(concatenatedPathList.last);
+      concatenatedPath = concatenatedPathList.last;
 
       ///above line will keep the 2nd last item
       ///of the path list. W/O this line, the system
       ///won't work
     }
   }
-  onPressedRemove (String filePath, String fileName) async {
-    String removeURL = "${Constants.baseUrl}/rm" +
-        "?folder=$filePath/$fileName";
+
+  onPressedRemove(String filePath, String fileName) async {
+    String removeURL =
+        "${Constants.baseUrl}/rm" + "?folder=$filePath/$fileName";
     var res = await http.get(Uri.parse(removeURL));
-    onPressedGetFilesAndFolders(
-          concatenatedPathList[concatenatedPathList.length - 1]);
-          
+    onPressedGetFilesAndFolders(concatenatedPathList.last);
+
+    ///concatenatedPathList.last contains the currently
+    ///opened folder
   }
 }

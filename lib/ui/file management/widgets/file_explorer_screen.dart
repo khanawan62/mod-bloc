@@ -107,9 +107,7 @@ class _FileExplorerScreenState extends State<FileExplorerScreen> {
                           ///concatenatedPathList array
                           _fec.concatenatedPathList.add(_fec.concatenatedPath);
                           _fec.onPressedGetFilesAndFolders(
-                              _fec.concatenatedPathList[
-                                  _fec.concatenatedPathList.length - 1]);
-
+                              _fec.concatenatedPathList.last);
                           ///we make the network request in above call
                           ///by passing the last item of the concatenatedPathList list
                         }
