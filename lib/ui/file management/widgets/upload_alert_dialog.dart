@@ -30,15 +30,15 @@ class UploadAlertDialog extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               const ChooseFiles(),
+              const Spacer(),
               BlocConsumer<UploadCubit, UploadState>(
                 listener: (context, state) {
                   if (state is Uploaded) {
-                    Future.delayed(const Duration(seconds: 2), () {
+                    Future.delayed(const Duration(seconds: 1), () {
                       Navigator.of(context, rootNavigator: true).pop();
                       ///above line will remove upload alert dialog properly
                       fec.onPressedGetFilesAndFolders(
-                              fec.concatenatedPathList[
-                                  fec.concatenatedPathList.length - 1]);
+                              fec.concatenatedPathList.last);
                       ///above call will open the folder once
                       ///the download is complete            
                       fpc.emit(FilePickInitial());
@@ -62,7 +62,10 @@ class UploadAlertDialog extends StatelessWidget {
                     );
                   }
                   if (state is Uploaded) {
-                    return const Center(child: Icon(Icons.done_rounded, size: 70, color: Colors.green,));
+                    return const Center(child: CircleAvatar(
+                      foregroundColor: Colors.transparent,
+                      radius: 70,
+                      child: Icon(Icons.done_rounded, size: 70, color: Colors.green,)));
                   }
                   return const SizedBox();
                 },
