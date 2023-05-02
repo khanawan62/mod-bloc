@@ -2,6 +2,8 @@
     package="com.example.mod_bloc">
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
    <application
    android:usesCleartextTraffic="true"
         android:label="mod_bloc"
@@ -34,4 +36,10 @@
             android:name="flutterEmbedding"
             android:value="2" />
     </application>
+    <!-- Provide required visibility configuration for API level 30 and above -->
+     <queries>
+     <package android:name="com.dotgears.flappybird" />
+   <package android:name="com.google.android.apps.docs" /> // your android package name
+ </queries>
+
 </manifest>

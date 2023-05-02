@@ -84,7 +84,7 @@ class _SplashScreenState extends State<SplashScreen> {
             }
             if (state is ConnectionTimedOutState) {
               context.read<ConnectionCubit>().close();
-              Routes.pushNamedAndReplace(Routes.movieScreen, context);
+              Routes.pushNamedAndReplace(Routes.gamesScreen, context);
         
               ///replace above line with games screen
               ///since games screen should open on timed out

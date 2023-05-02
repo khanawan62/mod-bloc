@@ -40,7 +40,8 @@ class SettingsScreen extends StatelessWidget {
                     width: 50,
                   ),
                 ),
-                Divider()
+                Divider(),
+                SettingsCardButton(icon: Icon (Icons.settings, size: 40, color: Colors.blueAccent,), txt: "System Settings", button: SizedBox(width: 50)),
               ],
             ),
           ),

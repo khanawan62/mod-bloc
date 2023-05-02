@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:mod_bloc/ui/file%20management/widgets/file_explorer_screen.dart';
+import 'package:mod_bloc/ui/games/games_screen.dart';
 import 'package:mod_bloc/ui/home_screen.dart';
+import 'package:mod_bloc/ui/movies/See%20All%20Movies/see_all_movies_screen.dart';
 import 'package:mod_bloc/ui/settings/widgets/settings_screen.dart';
 import 'package:mod_bloc/ui/splash%20screen.dart/splash_screen.dart';
 import 'package:mod_bloc/ui/thumbnails/thumbnails_screen.dart';
@@ -16,11 +18,13 @@ class Routes {
   static const String home = "/";
   static const String audioScreen = "/audioScreen";
   static const String movieScreen = "/moviesScreen";
+  static const String seeAllMoviesScreen = "/seeAllMoviesScreen";
   static const String thumbnailsScreen = "/thumbnailsScreen";
   static const String audioPlayerScreen = "/audioPlayerScreen";
   static const String videoPlayerScreen = "/videoPlayerScreen";
   static const String fileExplorerScreen = "/fileExplorerScreen";
   static const String settingsScreen = "/settingsScreen";
+  static const String gamesScreen = "/gamesScreen";
   //static const String testVideoPlayerScreen = "/testVideoPlayerScreen";
   static const String index = "/home";
 
@@ -74,6 +78,12 @@ class Routes {
       case settingsScreen:
         return CupertinoPageRoute(
             builder: (_) => const SettingsScreen(), settings: settings);
+      case gamesScreen:
+        return CupertinoPageRoute(
+            builder: (_) => const GamesScreen(), settings: settings);
+      // case seeAllMoviesScreen:
+      //   return CupertinoPageRoute(
+      //       builder: (_) => const SeeAllMoviesScreen(), settings: settings);
     }
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:permission_handler/permission_handler.dart';
 import '../../../utils/routes.dart';
 
 class SettingsCardButton extends StatelessWidget {
@@ -11,9 +11,15 @@ class SettingsCardButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
+      onTap: () async {
         if (txt == "File Management") {
           Routes.pushNamed(Routes.fileExplorerScreen, context);
+        }
+        if (txt == "System Settings") {
+         await openAppSettings();
+          ///above method will work after
+          ///you stop the app running process with control + c on terminal
+          ///and run the app agaian with flutter run
         }
       },
       child: Padding(
