@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mod_bloc/ui/movies/See%20All%20Movies/see_all_movies_screen.dart';
@@ -26,20 +27,11 @@ class GenreList extends StatelessWidget {
           padding: const EdgeInsets.only(top: 20),
           child: GestureDetector(
             onTap: () {
-              List<String> genreList = [];
-              for (Genre g in genres) {
-                genreList.add(g.title);
-              }
-              context.read<ThumbnailsCubit>().testGetAll(
-                  endPoint: "movieThumbnails",
-                  category: "movies",
-                  industry: industry,
-                  genreTitles: genreList);
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        SeeAllMoviesScreen(genreList: genres)),
+                CupertinoPageRoute(
+                    builder: (context) => SeeAllMoviesScreen(
+                        genreList: genres, industry: industry)),
               );
             },
             child: Row(
