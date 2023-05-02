@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../repos/services/thumbnail_service.dart';
 import '../../../utils/app_size.dart';
+import '../../../utils/routes.dart';
+import '../../video player/bloc/video_bloc.dart';
 
 class SeeAllThumbnailsListview extends StatelessWidget {
   final String industry;
@@ -36,10 +38,15 @@ class SeeAllThumbnailsListview extends StatelessWidget {
                   child: ListView.separated(
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, idx) {
-                        return Stack(
-                          alignment: Alignment.bottomCenter,
-                          children: [Image.network(snapshot.data![idx])],
-                        );
+                        return GestureDetector(
+                            onTap: () {
+                              context.read<VideoBloc>().add(VideoInitPressed(
+                                  thumbnailUrls: snapshot.data!,
+                                  passedIndex: idx));
+                              Routes.pushNamed(
+                                  Routes.videoPlayerScreen, context);
+                            },
+                            child: Image.network(snapshot.data![idx]));
                       },
                       separatorBuilder: (context, index) =>
                           const SizedBox(width: 20),
