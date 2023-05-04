@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mod_bloc/ui/movies/See%20All%20Movies/see_all_movies_screen.dart';
 import 'package:mod_bloc/ui/thumbnails/thumbnails_cubit.dart';
+import 'package:mod_bloc/utils/app_size.dart';
 import '../../repos/models/genre.dart';
 import '../../utils/routes.dart';
 import '../shared/see_all_button.dart';
@@ -49,7 +50,7 @@ class GenreList extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         SizedBox(
-          height: MediaQuery.of(context).size.height / 3.7,
+          height: AppSize.screenHeight / 3.7,
           child: ListView.separated(
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, idx) {
@@ -64,8 +65,8 @@ class GenreList extends StatelessWidget {
                     Routes.pushNamed(Routes.thumbnailsScreen, context);
                   },
                   child: SizedBox(
-                      height: MediaQuery.of(context).size.height / 4,
-                      width: MediaQuery.of(context).size.width / 4.2,
+                      height: AppSize.screenHeight / 4,
+                      width: AppSize.screenWidth / 4.2,
                       child: Stack(
                         alignment: Alignment.bottomCenter,
                         children: [
