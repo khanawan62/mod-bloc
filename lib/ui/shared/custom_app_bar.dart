@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../utils/routes.dart';
 import '../settings/widgets/password_dialog.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
@@ -13,13 +14,14 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
     int appBarTapped = 0;
     return GestureDetector(
       onTap: () {
-        if (title == "Home" || title == "Movies") {
-          appBarTapped ++;
-          if (appBarTapped == 10) {
-            showDialog(context: context, builder: ((context) =>  PasswordDialog()));
-            appBarTapped = 0;
-          }
-      };
+        Routes.pushNamed(Routes.settingsScreen, context);
+      //   if (title == "Home" || title == "Movies") {
+      //     appBarTapped ++;
+      //     if (appBarTapped == 10) {
+      //       showDialog(context: context, builder: ((context) =>  PasswordDialog()));
+      //       appBarTapped = 0;
+      //     }
+      // }
       },
       child: AppBar(
         automaticallyImplyLeading: true,
