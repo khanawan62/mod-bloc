@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../repos/services/thumbnail_service.dart';
 import '../../../utils/app_size.dart';
 import '../../../utils/routes.dart';
+import '../../shared/see_all_button.dart';
+import '../../thumbnails/thumbnails_cubit.dart';
 import '../../video player/bloc/video_bloc.dart';
 
 class SeeAllThumbnailsListview extends StatefulWidget {
@@ -12,21 +14,23 @@ class SeeAllThumbnailsListview extends StatefulWidget {
       {super.key, required this.industry, required this.genre});
 
   @override
-  State<SeeAllThumbnailsListview> createState() => _SeeAllThumbnailsListviewState();
+  State<SeeAllThumbnailsListview> createState() =>
+      _SeeAllThumbnailsListviewState();
 }
 
 class _SeeAllThumbnailsListviewState extends State<SeeAllThumbnailsListview> {
-  late Future <List <String>> loadThumbnails;
+  late Future<List<String>> loadThumbnails;
   @override
   void initState() {
     loadThumbnails = context.read<ThumbnailService>().getThumbnails(
-              endPoint: "movieThumbnails",
-              category: "movies",
-              industry: widget.industry,
-              genre: widget.genre,
-            );
+          endPoint: "movieThumbnails",
+          category: "movies",
+          industry: widget.industry,
+          genre: widget.genre,
+        );
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -39,13 +43,31 @@ class _SeeAllThumbnailsListviewState extends State<SeeAllThumbnailsListview> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 10, top: 10),
-                  child: Text(widget.genre[0].toUpperCase() + widget.genre.substring(1).toLowerCase(),
-                      style: const TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white)),
-                ),
+                    padding: const EdgeInsets.only(left: 10, top: 10),
+                    child: GestureDetector(
+                      onTap: () {
+                        context.read<ThumbnailsCubit>().onPressedGenre(
+                            endPoint: "movieThumbnails",
+                            category: "movies",
+                            industry: widget.industry,
+                            genre: widget.genre,
+                            screen: "moviesScreen");
+                        Routes.pushNamed(Routes.thumbnailsScreen, context);
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                              widget.genre[0].toUpperCase() +
+                                  widget.genre.substring(1).toLowerCase(),
+                              style: const TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white)),
+                          const SeeAllButton()
+                        ],
+                      ),
+                    )),
                 const SizedBox(height: 20),
                 SizedBox(
                   height: AppSize.screenHeight / 2.9,
@@ -53,13 +75,17 @@ class _SeeAllThumbnailsListviewState extends State<SeeAllThumbnailsListview> {
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, idx) {
                         return GestureDetector(
-                          onTap: () {
-                            context.read<VideoBloc>().add(VideoInitPressed(
-                            thumbnailUrls: snapshot.data!,
-                            passedIndex: idx));
-                        Routes.pushNamed(Routes.videoPlayerScreen, context);
-                          },
-                          child: Image.network(snapshot.data![idx], fit: BoxFit.fitHeight,));
+                            onTap: () {
+                              context.read<VideoBloc>().add(VideoInitPressed(
+                                  thumbnailUrls: snapshot.data!,
+                                  passedIndex: idx));
+                              Routes.pushNamed(
+                                  Routes.videoPlayerScreen, context);
+                            },
+                            child: Image.network(
+                              snapshot.data![idx],
+                              fit: BoxFit.fitHeight,
+                            ));
                       },
                       separatorBuilder: (context, index) =>
                           const SizedBox(width: 20),

@@ -9,7 +9,7 @@ part 'video_state.dart';
 
 class VideoBloc extends Bloc<VideoEvent, VideoState> {
   String get fileName =>
-      _videoUrls[_passedIndex].substring(33).split(".mp4").first;
+      _videoUrls[_passedIndex].substring(32).split(".mp4").first;
 
   ///above getter will be used to
   ///display the name of the currently played
@@ -118,6 +118,7 @@ class VideoBloc extends Bloc<VideoEvent, VideoState> {
     on<VideoInitPressed>((event, emit) {
       _passedIndex = event.passedIndex;
       for (String i in event.thumbnailUrls) {
+        print ("${Constants.videoBaseUrl}${i.substring(Constants.stringCutterNumber).split(".").first}.mp4");
         _videoUrls.add(
             "${Constants.videoBaseUrl}${i.substring(Constants.stringCutterNumber).split(".").first}.mp4");
       }
