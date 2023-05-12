@@ -9,16 +9,33 @@ class SendBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FilePickCubit, FilePickState>(
+    return BlocBuilder<UploadCubit, UploadState>(
+      ///this outer (parent) will show text widget
+      ///instead of send button while the files
+      ///are being uploaded in order for user to
+      ///prevent pressing of send button again
+      ///which will restart the upload process
+      ///which is undesireable
       builder: (context, state) {
-        if (state is FilePickLoaded ) {
-          return CupertinoButton.filled(child: const Text("Send"), onPressed: () {
-            context.read <UploadCubit> ().onPressedSend(state.files, 
-            context.read <FileExplorerCubit> ().getUploadPath()
-            );
-          });
+        if (state is Uploading) {
+          return const Center(
+              child: Text("Transferring files....",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)));
+        } else {
+          return BlocBuilder<FilePickCubit, FilePickState>(
+            builder: (context, state) {
+              if (state is FilePickLoaded) {
+                return CupertinoButton.filled(
+                    child: const Text("Send"),
+                    onPressed: () {
+                      context.read<UploadCubit>().onPressedSend(state.files,
+                          context.read<FileExplorerCubit>().getUploadPath());
+                    });
+              }
+              return const SizedBox();
+            },
+          );
         }
-        return const SizedBox();
       },
     );
   }

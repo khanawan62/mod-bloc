@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mod_bloc/ui/file%20management/cubit/file_explorer_cubit.dart';
+import 'package:mod_bloc/ui/file%20management/cubit/upload_cubit.dart';
 import 'package:mod_bloc/ui/file%20management/widgets/folder_widget.dart';
 import 'package:mod_bloc/ui/file%20management/widgets/remove_file_dialog.dart';
 import 'package:mod_bloc/ui/file%20management/widgets/upload_alert_dialog.dart';
@@ -41,6 +42,9 @@ class _FileExplorerScreenState extends State<FileExplorerScreen> {
           },
         ),
         appBar: AppBar(
+          automaticallyImplyLeading: _fec.appbarTextList.length == 1 ? true : false,
+          ///above line will make the left back arrow appear
+          ///only at the home  
           title: StatefulBuilder(builder: (context, setState) {
             return Text(_fec.appbarTextList[_fec.concatenatedPathList.length],
 
@@ -53,7 +57,14 @@ class _FileExplorerScreenState extends State<FileExplorerScreen> {
           centerTitle: true,
           backgroundColor: Colors.black,
           actions: [
-            _fec.appbarTextList.length == 1
+            BlocBuilder <UploadCubit, UploadState>(builder: (context, state) {
+              ///this bloc builder will hide the 
+              ///right back arrow while the 
+              ///file is uploading
+              if (state is Uploading) {
+                return const SizedBox();
+              } else {
+                return _fec.appbarTextList.length == 1
                 ? const SizedBox()
                 : IconButton(
                     onPressed: () {
@@ -61,7 +72,9 @@ class _FileExplorerScreenState extends State<FileExplorerScreen> {
                         _fec.goBack();
                       });
                     },
-                    icon: const Icon(Icons.arrow_back))
+                    icon: const Icon(Icons.arrow_back));
+              }
+            })
           ],
         ),
         body: BackgroundGradient(
