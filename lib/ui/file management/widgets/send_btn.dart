@@ -10,7 +10,7 @@ class SendBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<UploadCubit, UploadState>(
-      ///this outer (parent) will show text widget
+      ///this outer (parent) bloc builder will show text widget
       ///instead of send button while the files
       ///are being uploaded in order for user to
       ///prevent pressing of send button again
