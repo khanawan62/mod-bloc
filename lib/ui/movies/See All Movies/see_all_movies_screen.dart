@@ -17,7 +17,7 @@ class SeeAllMoviesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CustomAppBar(title: industry),
+        appBar: CustomAppBar(title: industry[0].toUpperCase() + industry.substring(1)),
         body: BackgroundGradient(
             widgetChild:
                 SeeAllBodyListview(genreList: genreList, industry: industry)));
