@@ -5,13 +5,15 @@ import 'package:mod_bloc/ui/thumbnails/thumbnails_state.dart';
 class ThumbnailsCubit extends Cubit<ThumbnailsState> {
   ThumbnailsCubit(super.initialState);
   final ThumbnailService _thumbnailService = ThumbnailService();
-
+  String _genreName = "";
+  String get genreName => _genreName;
   onPressedGenre(
       {required String endPoint,
       required String category,
       required String industry,
       required String genre,
       required String screen}) async {
+    _genreName = genre;
     try {
       emit(ThumbnailsLoadingState());
       List<String> thumbnails = await _thumbnailService.getThumbnails(
@@ -24,5 +26,4 @@ class ThumbnailsCubit extends Cubit<ThumbnailsState> {
       emit(ThumbnailsErrorState());
     }
   }
-
 }

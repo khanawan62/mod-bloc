@@ -21,7 +21,7 @@ class ThumbnailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(title: "Thumbnails"),
+      appBar:  CustomAppBar(title: context.read <ThumbnailsCubit> ().genreName[0].toUpperCase() + context.read <ThumbnailsCubit> ().genreName.substring(1)),
       body: BackgroundGradient(
         widgetChild: Padding(
           padding: const EdgeInsets.only(left: 4, top: 15),
