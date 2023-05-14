@@ -72,7 +72,7 @@ class _FileExplorerScreenState extends State<FileExplorerScreen> {
                         _fec.goBack();
                       });
                     },
-                    icon: const Icon(Icons.arrow_back));
+                    icon: const Icon(Icons.keyboard_return));
               }
             })
           ],
