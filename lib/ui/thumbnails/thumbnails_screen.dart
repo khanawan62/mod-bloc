@@ -10,6 +10,7 @@ import 'package:mod_bloc/ui/shared/custom_spinner.dart';
 import 'package:mod_bloc/ui/thumbnails/thumbnails_cubit.dart';
 import 'package:mod_bloc/ui/thumbnails/thumbnails_state.dart';
 import 'package:mod_bloc/ui/video%20player/bloc/video_bloc.dart';
+import 'package:mod_bloc/utils/app_size.dart';
 import 'package:mod_bloc/utils/routes.dart';
 
 class ThumbnailsScreen extends StatelessWidget {
@@ -21,6 +22,11 @@ class ThumbnailsScreen extends StatelessWidget {
   ///as an argument to List.generate widget
   @override
   Widget build(BuildContext context) {
+    final tc = context.read<ThumbnailsCubit>();
+
+    ///above tc object (short for thumbnails cubit)
+    ///is mainly used to get tc.isScreenAudio variable
+    ///to correcly display the relevant thumbnails
     return Scaffold(
       appBar: CustomAppBar(
           title: context.read<ThumbnailsCubit>().genreName[0].toUpperCase() +
@@ -28,13 +34,21 @@ class ThumbnailsScreen extends StatelessWidget {
       body: BackgroundGradient(
         widgetChild: Padding(
           padding: const EdgeInsets.only(left: 4, top: 15),
-          child: BlocConsumer<ThumbnailsCubit, ThumbnailsState>(
-              builder: (context, state) {
-                if (state is ThumbnailsLoadedState) {
-                  return GridView.count(
-                    crossAxisCount: 4,
-                    crossAxisSpacing: MediaQuery.of(context).size.height / 24,
-                    mainAxisSpacing: MediaQuery.of(context).size.height / 14,
+          child: BlocBuilder<ThumbnailsCubit, ThumbnailsState>(
+            builder: (context, state) {
+              if (state is ThumbnailsLoadedState) {
+                return Padding(
+                  padding: EdgeInsets.only(
+                      bottom: 15,
+                      top: 15,
+                      left: tc.isScreenAudio ? 25 : 4,
+                      right: tc.isScreenAudio ? 25 : 4),
+                  child: GridView.count(
+                    crossAxisCount: tc.isScreenAudio ? 3 : 4,
+                    crossAxisSpacing: tc.isScreenAudio
+                        ? AppSize.screenHeight / 5.66
+                        : AppSize.screenHeight / 24.66,
+                    mainAxisSpacing: AppSize.screenHeight / 14,
                     scrollDirection: Axis.vertical,
                     children: List.generate(state.thumbnails.length, (index) {
                       return GestureDetector(
@@ -61,17 +75,18 @@ class ThumbnailsScreen extends StatelessWidget {
                         ),
                       );
                     }),
-                  );
-                }
-                if (state is ThumbnailsLoadingState) {
-                  return const CustomSpinner();
-                }
-                if (state is ThumbnailsErrorState) {
-                  return const CustomErrorWidget(errorMsg: "Failed connection");
-                }
-                return Container();
-              },
-              listener: (context, state) {}),
+                  ),
+                );
+              }
+              if (state is ThumbnailsLoadingState) {
+                return const CustomSpinner();
+              }
+              if (state is ThumbnailsErrorState) {
+                return const CustomErrorWidget(errorMsg: "Failed connection");
+              }
+              return Container();
+            },
+          ),
         ),
       ),
     );
