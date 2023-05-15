@@ -27,65 +27,71 @@ class ThumbnailsScreen extends StatelessWidget {
     ///above tc object (short for thumbnails cubit)
     ///is mainly used to get tc.isScreenAudio variable
     ///to correcly display the relevant thumbnails
-    return Scaffold(
-      appBar: CustomAppBar(
-          title: context.read<ThumbnailsCubit>().genreName[0].toUpperCase() +
-              context.read<ThumbnailsCubit>().genreName.substring(1)),
-      body: BackgroundGradient(
-        widgetChild: Padding(
-          padding: const EdgeInsets.only(left: 4, top: 15),
-          child: BlocBuilder<ThumbnailsCubit, ThumbnailsState>(
-            builder: (context, state) {
-              if (state is ThumbnailsLoadedState) {
-                return Padding(
-                  padding: EdgeInsets.only(
-                      bottom: 15,
-                      top: 15,
-                      left: tc.isScreenAudio ? 25 : 4,
-                      right: tc.isScreenAudio ? 25 : 4),
-                  child: GridView.count(
-                    crossAxisCount: tc.isScreenAudio ? 3 : 4,
-                    crossAxisSpacing: tc.isScreenAudio
-                        ? AppSize.screenHeight / 5.66
-                        : AppSize.screenHeight / 24.66,
-                    mainAxisSpacing: AppSize.screenHeight / 14,
-                    scrollDirection: Axis.vertical,
-                    children: List.generate(state.thumbnails.length, (index) {
-                      return GestureDetector(
-                        onTap: () {
-                          if (state.screen == "audioScreen") {
-                            context.read<AudioPlayerBloc>().add(OnInitEvent(
-                                thumbnails: state.thumbnails,
-                                passedIndex: index));
-                            Routes.pushNamed(Routes.audioPlayerScreen, context);
-                          } else if (state.screen == "ebooksScreen") {
-                            context.read<EbookBloc>().add(EbookInit(
-                                thumbnailUrl: state.thumbnails[index]));
-                            Routes.pushNamed(Routes.ebookReaderScreen, context);
-                          } else {
-                            context.read<VideoBloc>().add(VideoInitPressed(
-                                thumbnailUrls: state.thumbnails,
-                                passedIndex: index));
-                            Routes.pushNamed(Routes.videoPlayerScreen, context);
-                          }
-                        },
-                        child: Image.network(
-                          state.thumbnails[index],
-                          fit: BoxFit.fitHeight,
-                        ),
-                      );
-                    }),
-                  ),
-                );
-              }
-              if (state is ThumbnailsLoadingState) {
-                return const CustomSpinner();
-              }
-              if (state is ThumbnailsErrorState) {
-                return const CustomErrorWidget(errorMsg: "Failed connection");
-              }
-              return Container();
-            },
+    return WillPopScope(
+      onWillPop: () async {
+       // context.read <VideoBloc> ().videoPlayerController.dispose();
+        return true;
+      },
+      child: Scaffold(
+        appBar: CustomAppBar(
+            title: context.read<ThumbnailsCubit>().genreName[0].toUpperCase() +
+                context.read<ThumbnailsCubit>().genreName.substring(1)),
+        body: BackgroundGradient(
+          widgetChild: Padding(
+            padding: const EdgeInsets.only(left: 4, top: 15),
+            child: BlocBuilder<ThumbnailsCubit, ThumbnailsState>(
+              builder: (context, state) {
+                if (state is ThumbnailsLoadedState) {
+                  return Padding(
+                    padding: EdgeInsets.only(
+                        bottom: 15,
+                        top: 15,
+                        left: tc.isScreenAudio ? 25 : 4,
+                        right: tc.isScreenAudio ? 25 : 4),
+                    child: GridView.count(
+                      crossAxisCount: tc.isScreenAudio ? 3 : 4,
+                      crossAxisSpacing: tc.isScreenAudio
+                          ? AppSize.screenHeight / 5.66
+                          : AppSize.screenHeight / 24.66,
+                      mainAxisSpacing: AppSize.screenHeight / 14,
+                      scrollDirection: Axis.vertical,
+                      children: List.generate(state.thumbnails.length, (index) {
+                        return GestureDetector(
+                          onTap: () {
+                            if (state.screen == "audioScreen") {
+                              context.read<AudioPlayerBloc>().add(OnInitEvent(
+                                  thumbnails: state.thumbnails,
+                                  passedIndex: index));
+                              Routes.pushNamed(Routes.audioPlayerScreen, context);
+                            } else if (state.screen == "ebooksScreen") {
+                              context.read<EbookBloc>().add(EbookInit(
+                                  thumbnailUrl: state.thumbnails[index]));
+                              Routes.pushNamed(Routes.ebookReaderScreen, context);
+                            } else {
+                              context.read<VideoBloc>().add(VideoInitPressed(
+                                  thumbnailUrls: state.thumbnails,
+                                  passedIndex: index));
+                              Routes.pushNamed(Routes.videoPlayerScreen, context);
+                            }
+                          },
+                          child: Image.network(
+                            state.thumbnails[index],
+                            fit: BoxFit.fitHeight,
+                          ),
+                        );
+                      }),
+                    ),
+                  );
+                }
+                if (state is ThumbnailsLoadingState) {
+                  return const CustomSpinner();
+                }
+                if (state is ThumbnailsErrorState) {
+                  return const CustomErrorWidget(errorMsg: "Failed connection");
+                }
+                return Container();
+              },
+            ),
           ),
         ),
       ),

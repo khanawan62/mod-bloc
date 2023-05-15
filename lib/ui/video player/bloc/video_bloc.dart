@@ -14,7 +14,7 @@ class VideoBloc extends Bloc<VideoEvent, VideoState> {
   ///above getter will be used to
   ///display the name of the currently played
   ///video inside the video_player_appbar widget
-  final List<String> _videoUrls = [];
+  List<String> _videoUrls = [];
 
   ///we'd recieve the thumbnail urls
   ///from the inititial bloc event, which is invoked at the thumbnails screen.
@@ -25,6 +25,7 @@ class VideoBloc extends Bloc<VideoEvent, VideoState> {
 
   ///Recieved from the initial bloc event
   late VideoPlayerController _videoPlayerController;
+  VideoPlayerController get videoPlayerController => _videoPlayerController;
 
   ///above controller will be passed to the state
   ///and the ui will make use of this passed controller
@@ -51,6 +52,7 @@ class VideoBloc extends Bloc<VideoEvent, VideoState> {
     _videoPlayerController =
         VideoPlayerController.network(_videoUrls[_passedIndex])
           ..initialize().then((_) {
+            _videoPlayerController.play();
             emit(VideoLoaded(controller: _videoPlayerController));
 
             ///above line will help stop the rotating spinner
@@ -98,15 +100,28 @@ class VideoBloc extends Bloc<VideoEvent, VideoState> {
     ///can also be used when play next is pressed
     if (_passedIndex < _videoUrls.length - 1) {
       _passedIndex++;
-      initializeController();
-      _videoPlayerController.play();
+      onControllerChange();
     }
   }
 
-  void releaseResources() {
+  Future<void> onControllerChange() async {
+    ///this is the method to get rid of exo player error
+    ///which comes when you load 4-5 videos in a row
+    ///Call this method on playing next or
+    ///previous video
+    if (_videoPlayerController == null) {
+      initializeController();
+    } else {
+      final oldController = _videoPlayerController;
+      await oldController.dispose();
+      initializeController();
+    }
+  }
+
+  void releaseResources() async {
     _passedIndex = 0;
     _videoUrls.clear();
-    _videoPlayerController.dispose();
+    await _videoPlayerController.dispose();
 
     ///not calling this function while going
     ///back from the video player screen, will
@@ -118,7 +133,6 @@ class VideoBloc extends Bloc<VideoEvent, VideoState> {
     on<VideoInitPressed>((event, emit) {
       _passedIndex = event.passedIndex;
       for (String i in event.thumbnailUrls) {
-        print ("${Constants.videoBaseUrl}${i.substring(Constants.stringCutterNumber).split(".").first}.mp4");
         _videoUrls.add(
             "${Constants.videoBaseUrl}${i.substring(Constants.stringCutterNumber).split(".").first}.mp4");
       }
@@ -141,8 +155,7 @@ class VideoBloc extends Bloc<VideoEvent, VideoState> {
     on<VideoPlayPreviousPressed>((event, emit) {
       if (_passedIndex > 0) {
         _passedIndex--;
-        initializeController();
-        _videoPlayerController.play();
+        onControllerChange();
       }
     });
 
