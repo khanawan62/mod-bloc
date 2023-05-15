@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../utils/routes.dart';
 import '../thumbnails/thumbnails_cubit.dart';
+import 'multi_page_menu_screen.dart';
 
 class MutliPageMenuItem extends StatelessWidget {
   final String imgPath;
@@ -42,6 +43,15 @@ class MutliPageMenuItem extends StatelessWidget {
               screen: "kidsScreen");
           Routes.pushNamed(Routes.thumbnailsScreen, context);
         }
+        if (title == "Ebooks") {
+          context.read<ThumbnailsCubit>().onPressedGenre(
+              endPoint: "ebookThumbnails",
+              category: "ebooks",
+              industry: "none",
+              genre: "ebooks",
+              screen: "ebooksScreen");
+          Routes.pushNamed(Routes.thumbnailsScreen, context);
+        }
       },
       child: Padding(
         padding: const EdgeInsets.all(10.0),
@@ -75,7 +85,7 @@ class MutliPageMenuItem extends StatelessWidget {
 
   Widget dots() {
     return Column(
-      children: List.generate(4, (dotsIndex) {
+      children: List.generate(MultiPageMenuScreen.titlesForMultiPageMenu.length, (dotsIndex) {
         return Container(
           margin: const EdgeInsets.only(bottom: 5),
           width: 8,

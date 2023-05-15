@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:mod_bloc/ui/ebook%20reader/ebook_reader.dart';
 import 'package:mod_bloc/ui/file%20management/widgets/file_explorer_screen.dart';
 import 'package:mod_bloc/ui/games/games_screen.dart';
 import 'package:mod_bloc/ui/home_screen.dart';
@@ -22,6 +23,7 @@ class Routes {
   static const String thumbnailsScreen = "/thumbnailsScreen";
   static const String audioPlayerScreen = "/audioPlayerScreen";
   static const String videoPlayerScreen = "/videoPlayerScreen";
+  static const String ebookReaderScreen = "/ebookReaderScreen";
   static const String fileExplorerScreen = "/fileExplorerScreen";
   static const String settingsScreen = "/settingsScreen";
   static const String gamesScreen = "/gamesScreen";
@@ -72,6 +74,9 @@ class Routes {
       case videoPlayerScreen:
         return CupertinoPageRoute(
             builder: (_) => const VideoPlayerScreen(), settings: settings);
+      case ebookReaderScreen:
+        return CupertinoPageRoute(
+            builder: (_) => const EbookReader(), settings: settings);
       case fileExplorerScreen:
         return CupertinoPageRoute(
             builder: (_) => const FileExplorerScreen(), settings: settings);

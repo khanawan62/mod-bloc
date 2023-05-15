@@ -5,5 +5,6 @@ class Constants {
   static String baseUrl = "http://$ip:$thumbnailPort";
   static String audioBaseUrl = "http://$ip:$staticContentPort/audio";
   static String videoBaseUrl = "http://$ip:$staticContentPort/videos";
-  static int stringCutterNumber = 41;
+  static String ebookBaseUrl = "http://$ip:$staticContentPort/ebooks";
+  static int stringCutterNumber = 42;
 }

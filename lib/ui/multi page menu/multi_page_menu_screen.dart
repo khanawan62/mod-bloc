@@ -8,9 +8,10 @@ class MultiPageMenuScreen extends StatelessWidget {
     "images/movies.jpg",
     "images/music.jpg",
     "images/kids.jpeg",
-    "images/tv.jpg"
+    "images/tv.jpg",
+    "images/ebooks.jpg"
   ];
-  List<String> titlesForMultiPageMenu = ["Movies", "Music", "Kids", "TV Shows"];
+  static List<String> titlesForMultiPageMenu = ["Movies", "Music", "Kids", "TV Shows", "Ebooks"];
   MultiPageMenuScreen({super.key});
 
   @override
