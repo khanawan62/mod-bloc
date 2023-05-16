@@ -101,7 +101,13 @@ class _ButtonsRowState extends State<ButtonsRow> with TickerProviderStateMixin {
                 }
               },
               child: widget.controller.value.isBuffering
-                  ? const CustomSpinner()
+                  ? SizedBox(
+                      width: AppSize.screenWidth / 8,
+                      child: const CustomSpinner())
+
+                  ///wrapping custom spinner with SizedBox with above
+                  ///width will not distort ui (buttons) when custom
+                  ///spinner is shown
                   : Icon(
                       widget.controller.value.isPlaying
                           ? Icons.pause_circle_filled_outlined
