@@ -16,6 +16,7 @@ class SeeAllBodyListview extends StatelessWidget {
       ///from jumping to top while scrolling up
         itemBuilder: (context, idx) {
           return Container(
+            height: AppSize.screenHeight / 2.24,
             color: idx.isEven ? Colors.black45 : Colors.black54,
             child: Padding(
                 padding: const EdgeInsets.only(bottom: 10, left: 20),

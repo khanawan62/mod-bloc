@@ -14,7 +14,7 @@ class VideoBloc extends Bloc<VideoEvent, VideoState> {
   ///above getter will be used to
   ///display the name of the currently played
   ///video inside the video_player_appbar widget
-  List<String> _videoUrls = [];
+  final List<String> _videoUrls = [];
 
   ///we'd recieve the thumbnail urls
   ///from the inititial bloc event, which is invoked at the thumbnails screen.
@@ -97,7 +97,7 @@ class VideoBloc extends Bloc<VideoEvent, VideoState> {
   }
 
   autoLoadNextVideo() {
-    ///can also be used when play next is pressed
+    ///method can also be used when play next is pressed
     if (_passedIndex < _videoUrls.length - 1) {
       _passedIndex++;
       onControllerChange();
@@ -106,7 +106,8 @@ class VideoBloc extends Bloc<VideoEvent, VideoState> {
 
   Future<void> onControllerChange() async {
     ///this is the method to get rid of exo player error
-    ///which comes when you load 4-5 videos in a row
+    ///which comes when you load 4-5 videos in a row and play
+    ///a video which was previosuly played.
     ///Call this method on playing next or
     ///previous video
     if (_videoPlayerController == null) {

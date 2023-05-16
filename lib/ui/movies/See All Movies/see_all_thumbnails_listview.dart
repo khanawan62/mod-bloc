@@ -43,7 +43,7 @@ class _SeeAllThumbnailsListviewState extends State<SeeAllThumbnailsListview> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                    padding: const EdgeInsets.only(left: 10, top: 10),
+                    padding: const EdgeInsets.only(left: 10, top: 20),
                     child: GestureDetector(
                       onTap: () {
                         context.read<ThumbnailsCubit>().onPressedGenre(
@@ -61,7 +61,7 @@ class _SeeAllThumbnailsListviewState extends State<SeeAllThumbnailsListview> {
                               widget.genre[0].toUpperCase() +
                                   widget.genre.substring(1).toLowerCase(),
                               style: const TextStyle(
-                                  fontSize: 20,
+                                  fontSize: 25,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white)),
                           const SeeAllButton()
@@ -70,7 +70,9 @@ class _SeeAllThumbnailsListviewState extends State<SeeAllThumbnailsListview> {
                     )),
                 const SizedBox(height: 20),
                 SizedBox(
-                  height: AppSize.screenHeight / 2.9,
+                  height: AppSize.screenHeight / 3.1,
+                  ///changing this height will have
+                  ///also change the image height
                   child: ListView.separated(
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, idx) {
