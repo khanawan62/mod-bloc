@@ -20,7 +20,10 @@ class CurrentTime extends StatelessWidget {
             return Text(TimeFormatt.formatDuration(snapshot.data!),
                 style: const TextStyle(fontSize: 18, color: Colors.white));
           }
-          return Container();
+          return const SizedBox(height: 20);
+          ///above SizedBox is important
+          ///w/o it the ui will distort (will do up and down)
+          ///when the timers are not shown on screen
         });
   }
 }

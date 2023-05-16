@@ -42,6 +42,7 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  const Spacer(),
                   const SongThumbnail(),
                   SizedBox(height: AppSize.screenHeight / 74),
                   const TitleAndLoopBtnRow(),
@@ -50,6 +51,7 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
                   const TimersRow(),
                   SizedBox(height: AppSize.screenHeight / 148),
                   const AudioProgressSlider(),
+                  SizedBox(height: AppSize.screenHeight / 26.66)
                 ],
               ),
             ),

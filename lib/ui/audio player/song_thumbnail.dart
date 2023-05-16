@@ -22,15 +22,18 @@ class SongThumbnail extends StatelessWidget {
       },
         builder: (context, state) {
           if (state is AudioPlayerLoadedState ) {
-            return SizedBox(
-              height: AppSize.screenHeight / 2,
-              width: AppSize.screenWidth / 1.25,
-              child: FittedBox(
-                fit: BoxFit.fill,
-                child: ClipRRect(
-                    borderRadius: BorderRadius.circular(6),
-                    child:
-                        Image.network(state.thumbnailURLs[state.passedIndex])),
+            return Padding(
+              padding: const EdgeInsets.only(left: 5),
+              child: SizedBox(
+                height: AppSize.screenHeight / 2,
+                width: AppSize.screenWidth / 1.270,
+                child: FittedBox(
+                  fit: BoxFit.fill,
+                  child: ClipRRect(
+                      borderRadius: BorderRadius.circular(6),
+                      child:
+                          Image.network(state.thumbnailURLs[state.passedIndex], fit: BoxFit.contain,)),
+                ),
               ),
             );
           }

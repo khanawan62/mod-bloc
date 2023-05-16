@@ -30,7 +30,7 @@ class TitleAndLoopBtnRow extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: SizedBox(
-            width: AppSize.screenWidth / 1.25,
+            width: AppSize.screenWidth / 1.245,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

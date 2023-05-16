@@ -44,7 +44,14 @@ class AudioProgressSlider extends StatelessWidget {
               ),
             );
           }
-          return Container();
+          return SliderTheme(
+            data: SliderThemeData(overlayShape: SliderComponentShape.noThumb),
+            child: Slider.adaptive(
+              min: 0.0,
+                  activeColor: Colors.red,
+                  inactiveColor: Colors.white,
+              value: 0, onChanged: (d) {}),
+          );
         },
       ),
     );

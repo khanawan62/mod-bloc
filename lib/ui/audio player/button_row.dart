@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mod_bloc/ui/audio%20player/audio_player_event.dart';
 import 'package:mod_bloc/ui/audio%20player/audio_player_state.dart';
+import 'package:mod_bloc/ui/shared/custom_spinner.dart';
 import 'package:mod_bloc/utils/app_size.dart';
 
 import 'audio_player_bloc.dart';
@@ -14,7 +15,7 @@ class ButtonRow extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: SizedBox(
-        width: AppSize.screenWidth / 1.25,
+        width: AppSize.screenWidth / 1.245,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -51,12 +52,19 @@ class ButtonRow extends StatelessWidget {
                       size: AppSize.screenWidth / 8,
                       color: Colors.white,
                     );
-                  }
+                  } 
+                  if (state is AudioPlayerPauseState) {
                   return Icon(
                     Icons.play_circle_filled_outlined,
                     size: AppSize.screenWidth / 8,
                     color: Colors.white,
                   );
+                  }
+                  return  Icon(
+                      Icons.pause_circle_filled_outlined,
+                      size: AppSize.screenWidth / 8,
+                      color: Colors.white,
+                    );
                 },
               ),
             ),
