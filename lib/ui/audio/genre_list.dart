@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mod_bloc/ui/audio/See%20All%20Audio/see_all_audio_screen.dart';
 import '../../repos/models/genre.dart';
 import '../../utils/routes.dart';
 import '../shared/see_all_button.dart';
@@ -19,16 +21,26 @@ class GenreList extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(top: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(industry[0].toUpperCase() + industry.substring(1),
-                  style: const TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white)),
-              const SeeAllButton()
-            ],
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                CupertinoPageRoute(
+                    builder: (context) => SeeAllAudioScreen(
+                        genreList: genres, industry: industry)),
+              );
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(industry[0].toUpperCase() + industry.substring(1),
+                    style: const TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white)),
+                const SeeAllButton()
+              ],
+            ),
           ),
         ),
         const SizedBox(height: 10),
