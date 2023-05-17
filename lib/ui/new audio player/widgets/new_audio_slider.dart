@@ -16,7 +16,9 @@ class NewAudioSlider extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.active) {
             return SliderTheme(
-              data: SliderThemeData(overlayShape: SliderComponentShape.noThumb),
+              data: SliderThemeData(
+                trackHeight: 1,
+                overlayShape: SliderComponentShape.noThumb),
               child: Slider.adaptive(
                 min: 0.0,
                 activeColor: Colors.red,
@@ -45,7 +47,9 @@ class NewAudioSlider extends StatelessWidget {
             );
           }
           return SliderTheme(
-            data: SliderThemeData(overlayShape: SliderComponentShape.noThumb),
+            data: SliderThemeData(
+              trackHeight: 1,
+              overlayShape: SliderComponentShape.noThumb),
             child: Slider.adaptive(
               min: 0.0,
                   activeColor: Colors.red,

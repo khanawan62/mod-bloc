@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mod_bloc/ui/audio%20player/audio_player_event.dart';
 import 'package:mod_bloc/utils/app_size.dart';
 
@@ -17,17 +18,17 @@ class SecondaryButtonsRow extends StatelessWidget {
         IconButton(
           padding: EdgeInsets.zero,
           constraints: const BoxConstraints(),
-          onPressed: () {}, icon: Icon(Icons.repeat,
+          onPressed: () {}, icon: FaIcon(FontAwesomeIcons.repeat,
                 size: AppSize.screenWidth / 38, color: Colors.white)),
          IconButton(
           padding: EdgeInsets.zero,
           constraints: const BoxConstraints(),
-          onPressed: () {}, icon: Icon(Icons.shuffle_sharp,
+          onPressed: () {}, icon: FaIcon(FontAwesomeIcons.shuffle,
                 size: AppSize.screenWidth / 38, color: Colors.white)),  
         IconButton(
           padding: EdgeInsets.zero,
           constraints: const BoxConstraints(),
-          onPressed: () {}, icon: Icon(Icons.volume_down,
+          onPressed: () {}, icon: FaIcon(FontAwesomeIcons.volumeLow,
                 size: AppSize.screenWidth / 38, color: Colors.white))
       ],
     );

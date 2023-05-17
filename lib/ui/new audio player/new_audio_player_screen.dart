@@ -40,12 +40,14 @@ class _NewAudioPlayerScreenState extends State<NewAudioPlayerScreen> {
       child: Scaffold(
           backgroundColor: Colors.grey.shade900,
           appBar: const CustomAppBar(title: "audio player"),
-          body: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: const [
-              LeftSideControls(),
-              AudioThumbnail()
-            ],
+          body: Center(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
+                LeftSideControls(),
+                AudioThumbnail()
+              ],
+            ),
           )),
     );
   }

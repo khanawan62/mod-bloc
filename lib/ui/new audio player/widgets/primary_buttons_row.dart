@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mod_bloc/ui/audio%20player/audio_player_event.dart';
 import 'package:mod_bloc/ui/audio%20player/audio_player_state.dart';
 import 'package:mod_bloc/utils/app_size.dart';
@@ -20,7 +21,7 @@ class PrimaryButtonsRow extends StatelessWidget {
             onPressed: () {
               context.read<AudioPlayerBloc>().add(OnPressedPrevious());
             },
-            icon: Icon(Icons.skip_previous,
+            icon: FaIcon(FontAwesomeIcons.backwardStep,
                 size: AppSize.screenWidth / 38, color: Colors.white)),
         GestureDetector(
           onTap: () {
@@ -73,7 +74,7 @@ class PrimaryButtonsRow extends StatelessWidget {
             onPressed: () {
               context.read<AudioPlayerBloc>().add(OnPressedNext());
             },
-            icon: Icon(Icons.skip_next,
+            icon: FaIcon(FontAwesomeIcons.forwardStep,
                 size: AppSize.screenWidth / 38, color: Colors.white)),
       ],
     );

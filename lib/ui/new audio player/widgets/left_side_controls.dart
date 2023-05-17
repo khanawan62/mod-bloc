@@ -35,9 +35,9 @@ class LeftSideControls extends StatelessWidget {
             const SecondaryButtonsRow(),
             SizedBox(height: AppSize.screenHeight / 26.66),
             SizedBox(
-              width: AppSize.screenWidth / 3.4,
+              width: AppSize.screenWidth / 3.2,
               child: const Divider(
-                height: 5,
+                height: 3,
                 color: Colors.white,
               ),
             )
