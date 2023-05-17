@@ -70,7 +70,8 @@ class TitleAndLoopBtnRow extends StatelessWidget {
                               color: loopBtnClicked ? Colors.red : Colors.white),
                         );
                       },
-                    ))
+                    )
+                    )
               ],
             ),
           ),
