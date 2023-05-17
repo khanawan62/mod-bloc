@@ -17,7 +17,8 @@ class BackgroundGradient extends StatelessWidget {
                 Colors.brown.shade400,
                 Colors.grey,
               ],
-            )),
+            )
+            ),
             child: widgetChild);
   }
 }

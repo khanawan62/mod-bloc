@@ -4,6 +4,7 @@ import 'package:mod_bloc/ui/file%20management/widgets/file_explorer_screen.dart'
 import 'package:mod_bloc/ui/games/games_screen.dart';
 import 'package:mod_bloc/ui/home_screen.dart';
 import 'package:mod_bloc/ui/movies/See%20All%20Movies/see_all_movies_screen.dart';
+import 'package:mod_bloc/ui/new%20audio%20player/new_audio_player_screen.dart';
 import 'package:mod_bloc/ui/settings/widgets/settings_screen.dart';
 import 'package:mod_bloc/ui/splash%20screen.dart/splash_screen.dart';
 import 'package:mod_bloc/ui/thumbnails/thumbnails_screen.dart';
@@ -22,6 +23,7 @@ class Routes {
   static const String seeAllMoviesScreen = "/seeAllMoviesScreen";
   static const String thumbnailsScreen = "/thumbnailsScreen";
   static const String audioPlayerScreen = "/audioPlayerScreen";
+  static const String newAudioPlayerScreen = "/newAudioPlayerScreen";
   static const String videoPlayerScreen = "/videoPlayerScreen";
   static const String ebookReaderScreen = "/ebookReaderScreen";
   static const String fileExplorerScreen = "/fileExplorerScreen";
@@ -71,6 +73,9 @@ class Routes {
       case audioPlayerScreen:
         return CupertinoPageRoute(
             builder: (_) => const AudioPlayerScreen(), settings: settings);
+      case newAudioPlayerScreen:
+        return CupertinoPageRoute(
+            builder: (_) => const NewAudioPlayerScreen(), settings: settings);
       case videoPlayerScreen:
         return CupertinoPageRoute(
             builder: (_) => const VideoPlayerScreen(), settings: settings);
