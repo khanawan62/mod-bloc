@@ -38,15 +38,24 @@ class _NewAudioPlayerScreenState extends State<NewAudioPlayerScreen> {
         return true;
       },
       child: Scaffold(
-          backgroundColor: Colors.grey.shade900,
+          //backgroundColor: Colors.grey.shade900,
           appBar: const CustomAppBar(title: "audio player"),
-          body: Center(
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: const [
-                LeftSideControls(),
-                AudioThumbnail()
-              ],
+          body: Container(
+            decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.topRight,
+              colors: [Color.fromARGB(255, 22, 21, 21), Colors.brown.shade900, Colors.grey.shade900]
+            ),
+          ),
+            child: Center(
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: const [
+                  LeftSideControls(),
+                  AudioThumbnail()
+                ],
+              ),
             ),
           )),
     );
