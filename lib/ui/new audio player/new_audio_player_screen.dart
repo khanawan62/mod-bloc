@@ -14,6 +14,7 @@ import 'package:mod_bloc/ui/shared/background_gradient.dart';
 import '../audio player/audio_player_bloc.dart';
 import '../audio player/audio_player_event.dart';
 import '../shared/custom_app_bar.dart';
+import '../thumbnails/thumbnails_cubit.dart';
 
 class NewAudioPlayerScreen extends StatefulWidget {
   const NewAudioPlayerScreen({super.key});
@@ -23,10 +24,11 @@ class NewAudioPlayerScreen extends StatefulWidget {
 }
 
 class _NewAudioPlayerScreenState extends State<NewAudioPlayerScreen> {
+  late final String genreName;
   @override
   void initState() {
     context.read<AudioPlayerBloc>().add(OnPressedPlay());
-    super.initState();
+    genreName = context.read<ThumbnailsCubit>().genreName;
     super.initState();
   }
 
@@ -38,7 +40,7 @@ class _NewAudioPlayerScreenState extends State<NewAudioPlayerScreen> {
         return true;
       },
       child: Scaffold(
-          appBar: const CustomAppBar(title: "audio player"),
+          appBar:  CustomAppBar(title: genreName[0].toUpperCase() + genreName.substring(1)),
           body: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
