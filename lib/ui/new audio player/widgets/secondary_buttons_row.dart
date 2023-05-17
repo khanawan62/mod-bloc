@@ -16,7 +16,10 @@ class SecondaryButtonsRow extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         IconButton(
-          padding: EdgeInsets.zero,
+          padding: const EdgeInsets.only(right: 15, top: 15, bottom: 15),
+          ///leave one side, writing EdgeInsets.zero
+            ///will cause the button tapping 
+            ///pretty difficult
           constraints: const BoxConstraints(),
           onPressed: () {}, icon: FaIcon(FontAwesomeIcons.repeat,
                 size: AppSize.screenWidth / 38, color: Colors.white)),
@@ -26,7 +29,10 @@ class SecondaryButtonsRow extends StatelessWidget {
           onPressed: () {}, icon: FaIcon(FontAwesomeIcons.shuffle,
                 size: AppSize.screenWidth / 38, color: Colors.white)),  
         IconButton(
-          padding: EdgeInsets.zero,
+          padding: const EdgeInsets.only(left: 15, top: 15, bottom: 15),
+          ///leave one side, writing EdgeInsets.zero
+            ///will cause the button tapping 
+            ///pretty difficult
           constraints: const BoxConstraints(),
           onPressed: () {}, icon: FaIcon(FontAwesomeIcons.volumeLow,
                 size: AppSize.screenWidth / 38, color: Colors.white))

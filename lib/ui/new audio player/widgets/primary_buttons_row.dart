@@ -16,13 +16,17 @@ class PrimaryButtonsRow extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         IconButton(
-            padding: EdgeInsets.zero,
+            padding: const EdgeInsets.only(right: 15, top: 15, bottom: 15),
+
+            ///leave one side, writing EdgeInsets.zero
+            ///will cause the button tapping
+            ///pretty difficult
             constraints: const BoxConstraints(),
             onPressed: () {
               context.read<AudioPlayerBloc>().add(OnPressedPrevious());
             },
             icon: FaIcon(FontAwesomeIcons.backwardStep,
-                size: AppSize.screenWidth / 38, color: Colors.white)),
+                size: AppSize.screenWidth / 32, color: Colors.white)),
         GestureDetector(
           onTap: () {
             if (context.read<AudioPlayerBloc>().state
@@ -47,35 +51,69 @@ class PrimaryButtonsRow extends StatelessWidget {
             },
             builder: (context, state) {
               if (state is AudioPlayerPlayingState) {
-                return Icon(
-                  Icons.pause_circle_filled_outlined,
-                  size: AppSize.screenWidth / 10,
-                  color: Colors.white,
+                return Container(
+                  height: AppSize.screenHeight / 8,
+                  width: AppSize.screenHeight / 8,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.white,
+                      ),
+                      borderRadius: BorderRadius.all(
+                          Radius.circular(AppSize.screenHeight / 8))),
+                  child: Icon(
+                    Icons.pause,
+                    size: AppSize.screenWidth / 21.33,
+                    color: Colors.white,
+                  ),
                 );
               }
               if (state is AudioPlayerPauseState) {
-                return Icon(
-                  Icons.play_circle_fill_rounded,
-                  size: AppSize.screenWidth / 10,
-                  color: Colors.white,
+                return Container(
+                  height: AppSize.screenHeight / 8,
+                  width: AppSize.screenHeight / 8,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.white,
+                      ),
+                      borderRadius: BorderRadius.all(
+                          Radius.circular(AppSize.screenHeight / 8))),
+                  child: Icon(
+                    Icons.play_arrow,
+                    size: AppSize.screenWidth / 21.33,
+                    color: Colors.white,
+                  ),
                 );
               }
-              return Icon(
-                Icons.pause_circle_filled_outlined,
-                size: AppSize.screenWidth / 10,
-                color: Colors.white,
+              return Container(
+                height: AppSize.screenHeight / 8,
+                width: AppSize.screenHeight / 8,
+                decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.white,
+                    ),
+                    borderRadius: BorderRadius.all(
+                        Radius.circular(AppSize.screenHeight / 8))),
+                child: Icon(
+                  Icons.pause,
+                  size: AppSize.screenWidth / 21.33,
+                  color: Colors.white,
+                ),
               );
             },
           ),
         ),
         IconButton(
-            padding: EdgeInsets.zero,
+            padding: const EdgeInsets.only(left: 15, top: 15, bottom: 15),
+
+            ///leave one side, writing EdgeInsets.zero
+            ///will cause the button tapping
+            ///pretty difficult
             constraints: const BoxConstraints(),
             onPressed: () {
               context.read<AudioPlayerBloc>().add(OnPressedNext());
             },
             icon: FaIcon(FontAwesomeIcons.forwardStep,
-                size: AppSize.screenWidth / 38, color: Colors.white)),
+                size: AppSize.screenWidth / 32, color: Colors.white)),
       ],
     );
   }

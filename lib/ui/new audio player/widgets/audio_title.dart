@@ -26,6 +26,7 @@ class AudioTitle extends StatelessWidget {
                 .split(".")
                 .first,
             style: const TextStyle(
+              height: 1.2,
                 fontSize: 30, color: Colors.white, fontWeight: FontWeight.w500),
           );
         }

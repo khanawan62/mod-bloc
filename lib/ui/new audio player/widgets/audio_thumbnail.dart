@@ -32,7 +32,7 @@ class AudioThumbnail extends StatelessWidget {
                   child: ClipRRect(
                       borderRadius: BorderRadius.circular(6),
                       child:
-                          Image.network(state.thumbnailURLs[state.passedIndex], fit: BoxFit.contain,)),
+                          Image.network(state.thumbnailURLs[state.passedIndex], fit: BoxFit.cover,)),
                 ),
               ),
             );
