@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mod_bloc/ui/new%20audio%20player/widgets/audio_title.dart';
 import 'package:mod_bloc/ui/new%20audio%20player/widgets/genre_title.dart';
-import 'package:mod_bloc/ui/thumbnails/thumbnails_cubit.dart';
-
 import '../../../utils/app_size.dart';
 import 'new_timers_and_slider_row.dart';
 import 'primary_buttons_row.dart';
