@@ -18,6 +18,9 @@ import 'package:mod_bloc/ui/video%20player/controls/bloc/controls_bloc.dart';
 import 'package:mod_bloc/utils/routes.dart';
 
 void main() {
+  Paint.enableDithering = true;
+  ///above line will make color 
+  ///gradients look smooth
   runApp(RepositoryProvider(
       create: ((context) => ThumbnailService()),
       child: MultiBlocProvider(
