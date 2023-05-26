@@ -20,12 +20,13 @@ class LeftSideControls extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              ///w/o it, left side controls
-              ///will go up and down as the big
-              ///multi lined audio title take 
-              ///a lot of vertical space
-             height: AppSize.screenHeight / 11.42,
-              child: const AudioTitle()),
+
+                ///w/o it, left side controls
+                ///will go up and down as the big
+                ///multi lined audio title take
+                ///a lot of vertical space
+                height: AppSize.screenHeight / 11.42,
+                child: const AudioTitle()),
             SizedBox(height: AppSize.screenHeight / 40),
             const GenreTitle(),
             SizedBox(height: AppSize.screenHeight / 40),
@@ -41,7 +42,12 @@ class LeftSideControls extends StatelessWidget {
                 height: 3,
                 color: Colors.white,
               ),
-            )
+            ),
+            Image.asset(
+              height: 100,
+              fit: BoxFit.fitHeight,
+              "images/giphy 3.gif",
+            ),
           ],
         ),
       ),

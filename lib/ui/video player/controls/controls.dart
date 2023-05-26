@@ -37,7 +37,7 @@ class Controls extends StatelessWidget {
               const Spacer(),
               TimersRow(controller: controller),
               VideoSlider(controller: controller),
-              const SizedBox(height: 20)
+              const SizedBox(height: 50)
             ],
           ),
         );

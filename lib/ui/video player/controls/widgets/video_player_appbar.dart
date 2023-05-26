@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mod_bloc/ui/video%20player/bloc/video_bloc.dart';
 import 'package:mod_bloc/ui/video%20player/controls/bloc/controls_bloc.dart';
 
-class VideoPlayerAppbar extends StatelessWidget with PreferredSizeWidget {
+class VideoPlayerAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
   const VideoPlayerAppbar({super.key});

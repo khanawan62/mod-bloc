@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../utils/routes.dart';
-import '../settings/widgets/password_dialog.dart';
 
-class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
   final String title;
@@ -11,7 +10,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    int appBarTapped = 0;
+    // int appBarTapped = 0;
     return GestureDetector(
       onTap: () {
         Routes.pushNamed(Routes.settingsScreen, context);

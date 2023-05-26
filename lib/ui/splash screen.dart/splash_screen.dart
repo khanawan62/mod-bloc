@@ -6,7 +6,6 @@ import 'package:mod_bloc/ui/splash%20screen.dart/connection_cubit.dart';
 import 'package:mod_bloc/ui/splash%20screen.dart/connection_state.dart';
 import 'package:mod_bloc/utils/app_size.dart';
 import 'package:mod_bloc/utils/routes.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class SplashScreen extends StatefulWidget {

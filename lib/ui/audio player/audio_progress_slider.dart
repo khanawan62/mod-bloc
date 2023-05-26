@@ -14,7 +14,7 @@ class AudioProgressSlider extends StatelessWidget {
       child: StreamBuilder<Duration>(
         stream: context.read<AudioPlayerBloc>().getCurrentTimeStream(),
         builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.active) {
+          if (snapshot.connectionState == ConnectionState.active && snapshot.hasData) {
             return SliderTheme(
               data: SliderThemeData(overlayShape: SliderComponentShape.noThumb),
               child: Slider.adaptive(
@@ -22,7 +22,7 @@ class AudioProgressSlider extends StatelessWidget {
                 activeColor: Colors.red,
                 inactiveColor: Colors.white,
                 value: snapshot.data!.inSeconds
-                    .toDouble(), //without ternary it was causing error
+                    .toDouble() + 1, //without ternary it was causing error
                 max: context
                         .read<AudioPlayerBloc>()
                         .totalTime

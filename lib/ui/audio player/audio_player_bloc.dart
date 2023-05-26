@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'dart:math';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mod_bloc/ui/audio%20player/audio_player_event.dart';
@@ -27,7 +27,7 @@ class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
   ///as it is called in onPressedNext
   ///and is passed (emitted) to AudioPlayerLoadedState
   ///to change the thumbnail of the song accordingly
-  final List<String> _urlSourceList = [];
+  List<String> _urlSourceList = [];
 
   ///_urlSourceList is filled with song urls
   ///image extensions are replaced with mp3 extension
@@ -40,6 +40,7 @@ class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
   ///and is passed (emitted) to AudioPlayerLoadedState
   ///to change the url which eventaully
   ///chages thubnail and the song accordingly
+  ///
   void nextPressed() async {
     ///not only does it play the next track,
     ///it also changes the song thumbnail by
@@ -146,6 +147,7 @@ class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
     ///of the total_time widget
     return _audioplayer.onDurationChanged;
   }
+
   @override
   Future<void> close() {
     onCompleteStream.cancel();

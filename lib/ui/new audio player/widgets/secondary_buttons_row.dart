@@ -12,6 +12,7 @@ class SecondaryButtonsRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool loopBtnClicked = false;
+    bool shuffleClicked = false;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -44,12 +45,24 @@ class SecondaryButtonsRow extends StatelessWidget {
                     size: AppSize.screenWidth / 38, color: loopBtnClicked ? Colors.red : Colors.white));
           },
         ),
-        IconButton(
-            padding: EdgeInsets.zero,
-            constraints: const BoxConstraints(),
-            onPressed: () {},
-            icon: FaIcon(FontAwesomeIcons.shuffle,
-                size: AppSize.screenWidth / 38, color: Colors.white)),
+        StatefulBuilder(
+          builder: (context, setState) {
+            return IconButton(
+                padding: const EdgeInsets.only(right: 15, top: 15, bottom: 15),
+
+                ///leave one side, writing EdgeInsets.zero
+                ///will cause the button tapping
+                ///pretty difficult
+                constraints: const BoxConstraints(),
+                onPressed: () {
+                  setState(() {
+                    shuffleClicked = !shuffleClicked;
+                  });
+                },
+                icon: FaIcon(FontAwesomeIcons.shuffle,
+                    size: AppSize.screenWidth / 38, color: shuffleClicked ? Colors.red : Colors.white));
+          },
+        ),
         IconButton(
             padding: const EdgeInsets.only(left: 15, top: 15, bottom: 15),
 

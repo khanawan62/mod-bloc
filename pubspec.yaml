@@ -83,6 +83,7 @@ flutter:
     - images/tv.jpg
     - images/music.jpg
     - images/ebooks.jpg
+    - images/giphy 3.gif
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

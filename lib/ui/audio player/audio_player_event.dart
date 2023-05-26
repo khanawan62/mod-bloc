@@ -29,12 +29,20 @@ class OnPressedPause extends AudioPlayerEvent {
   @override
   List<Object?> get props => [];
 }
+
 class OnPressedExit extends AudioPlayerEvent {
   @override
   List<Object?> get props => [];
 }
+
 class OnGetTimeEvent extends AudioPlayerEvent {
   @override
   List<Object?> get props => [];
 }
 
+// class OnShufflePressed extends AudioPlayerEvent {
+//   final bool shufflePressed;
+//   OnShufflePressed({required this.shufflePressed});
+//   @override
+//   List<Object?> get props => [shufflePressed];
+// }
