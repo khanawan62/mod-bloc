@@ -10,20 +10,23 @@ class VideoSlider extends StatelessWidget {
   VideoSlider({super.key, required this.controller});
 
   int maxBuffering = 0;
+  bool showThumb = false;
 
-  getBufferingProgress () {
+  getBufferingProgress() {
     for (final DurationRange range in controller.value.buffered) {
       final int end = range.end.inSeconds;
       if (end > maxBuffering) {
         maxBuffering = end;
       }
     }
+
     ///this code was taken from exploring the video player package
     ///I don't know how this code works
     ///But it will give the video buffering progress
     ///You can't take this code to bloc
     ///doing so won't work
   }
+
   @override
   Widget build(BuildContext context) {
     final VideoBloc videoBloc = context.read<VideoBloc>();
@@ -33,25 +36,29 @@ class VideoSlider extends StatelessWidget {
       width: AppSize.screenWidth * 0.98,
       child: Stack(children: [
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: AppSize.screenWidth / 52.244898, vertical: AppSize.screenHeight / 36.3636364),
+          padding: EdgeInsets.symmetric(
+              horizontal: AppSize.screenWidth / 52.244898,
+              vertical: AppSize.screenHeight / 36.3636364),
           child: LinearProgressIndicator(
             value: maxBuffering / videoBloc.totalDuration,
-            valueColor: AlwaysStoppedAnimation<Color>(Colors.grey.shade700),
-            backgroundColor: Colors.white,
+            valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),
+            backgroundColor: const Color.fromRGBO(128, 128, 128, 1),
           ),
         ),
         SliderTheme(
-            data: SliderThemeData(
+            data: const SliderThemeData(
+              overlayColor: Colors.yellow,
               trackHeight: 1,
+
               ///keeping track height as small as
               ///1 will make the buffering progress (linear progress indicator)
               ///show nicely
-              thumbShape: SliderComponentShape.noThumb,
+              thumbShape: RoundSliderThumbShape(enabledThumbRadius: 7),
             ),
             child: Slider.adaptive(
               min: 0.0,
               activeColor: Colors.red,
-              inactiveColor: Colors.white,
+              inactiveColor: const Color.fromRGBO(128, 128, 128, 1),
               value: videoBloc.currentPosition,
               max: videoBloc.totalDuration,
               onChangeStart: (value) {
