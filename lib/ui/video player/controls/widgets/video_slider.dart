@@ -7,31 +7,13 @@ import 'package:video_player/video_player.dart';
 
 class VideoSlider extends StatelessWidget {
   final VideoPlayerController controller;
-  VideoSlider({super.key, required this.controller});
-
-  int maxBuffering = 0;
-  bool showThumb = false;
-
-  getBufferingProgress() {
-    for (final DurationRange range in controller.value.buffered) {
-      final int end = range.end.inSeconds;
-      if (end > maxBuffering) {
-        maxBuffering = end;
-      }
-    }
-
-    ///this code was taken from exploring the video player package
-    ///I don't know how this code works
-    ///But it will give the video buffering progress
-    ///You can't take this code to bloc
-    ///doing so won't work
-  }
+  const VideoSlider({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
     final VideoBloc videoBloc = context.read<VideoBloc>();
     final ControlsBloc controlsBloc = context.read<ControlsBloc>();
-    getBufferingProgress();
+    videoBloc.getBufferingProgress ();
     return SizedBox(
       width: AppSize.screenWidth * 0.98,
       child: Stack(children: [
@@ -41,7 +23,7 @@ class VideoSlider extends StatelessWidget {
               vertical: AppSize.screenHeight / 34.3736364),
           child: LinearProgressIndicator(
             minHeight: 1.5,
-            value: maxBuffering / videoBloc.totalDuration,
+            value: videoBloc.maxBuffering / videoBloc.totalDuration,
             valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),
             backgroundColor: const Color.fromRGBO(128, 128, 128, 1),
           ),

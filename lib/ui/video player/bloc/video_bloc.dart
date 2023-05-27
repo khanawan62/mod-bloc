@@ -8,6 +8,7 @@ part 'video_event.dart';
 part 'video_state.dart';
 
 class VideoBloc extends Bloc<VideoEvent, VideoState> {
+  
   String get fileName =>
       _videoUrls[_passedIndex].substring(32).split(".mp4").first;
 
@@ -44,7 +45,29 @@ class VideoBloc extends Bloc<VideoEvent, VideoState> {
     emit(VideoTimeUpdate(controller: _videoPlayerController));
   }
 
+  int _maxBuffering = 0;
+  ///this variable will be used in value property of slider widget's
+  ///LinearProgressIndicator to show buffering progress
+  int get maxBuffering => _maxBuffering;
+  getBufferingProgress() {
+    ///this method will be called inside the build
+    ///method of video_slider widget
+    for (final DurationRange range in _videoPlayerController.value.buffered) {
+      final int end = range.end.inSeconds;
+      if (end > _maxBuffering) {
+        _maxBuffering = end;
+      }
+    }
+    ///this code (method) was taken from exploring the video player package
+    ///I don't know how this code works
+    ///But it will give the video buffering progress
+  }
+
   initializeController() {
+    _maxBuffering = 0;
+    ///above variable needs to set to 0 here
+    ///otherwise newly loaded video will
+    ///have previous video's buffering progress
     emit(VideoLoading());
 
     ///above line will help show spinner
