@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mod_bloc/repos/models/genre.dart';
 import 'package:mod_bloc/ui/audio/See%20All%20Audio/see_all_audio_thumbnails_listview.dart';
-import 'package:mod_bloc/utils/app_size.dart';
+import 'package:mod_bloc/utils/constants/app_size.dart';
 
 class SeeAllAudioBodyListview extends StatelessWidget {
   final List<Genre> genreList;

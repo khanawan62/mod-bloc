@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../repos/services/thumbnail_service.dart';
-import '../../../utils/app_size.dart';
-import '../../../utils/routes.dart';
+import '../../../utils/constants/app_size.dart';
+import '../../../utils/config/routes.dart';
 import '../../audio player/audio_player_bloc.dart';
 import '../../audio player/audio_player_event.dart';
 import '../../shared/see_all_button.dart';

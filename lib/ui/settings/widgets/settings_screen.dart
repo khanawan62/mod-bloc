@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mod_bloc/ui/settings/widgets/settings_card_button.dart';
 import 'package:mod_bloc/ui/settings/widgets/switch_button.dart';
-import 'package:mod_bloc/utils/app_size.dart';
+import 'package:mod_bloc/utils/constants/app_size.dart';
 
 import '../../shared/custom_app_bar.dart';
 

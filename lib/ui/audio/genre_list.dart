@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mod_bloc/ui/audio/See%20All%20Audio/see_all_audio_screen.dart';
 import '../../repos/models/genre.dart';
-import '../../utils/routes.dart';
+import '../../utils/config/routes.dart';
 import '../shared/see_all_button.dart';
 import '../thumbnails/thumbnails_cubit.dart';
 

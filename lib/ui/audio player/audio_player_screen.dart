@@ -8,7 +8,7 @@ import 'package:mod_bloc/ui/audio%20player/timers_row.dart';
 import 'package:mod_bloc/ui/audio%20player/title_and_loop_btn_row.dart';
 import 'package:mod_bloc/ui/shared/background_gradient.dart';
 import 'package:mod_bloc/ui/shared/custom_app_bar.dart';
-import 'package:mod_bloc/utils/app_size.dart';
+import 'package:mod_bloc/utils/constants/app_size.dart';
 
 import 'audio_progress_slider.dart';
 

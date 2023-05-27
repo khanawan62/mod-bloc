@@ -7,7 +7,7 @@ import 'package:mod_bloc/ui/file%20management/widgets/remove_file_dialog.dart';
 import 'package:mod_bloc/ui/file%20management/widgets/upload_alert_dialog.dart';
 import 'package:mod_bloc/ui/shared/background_gradient.dart';
 import 'package:mod_bloc/ui/shared/custom_spinner.dart';
-import 'package:mod_bloc/utils/app_size.dart';
+import 'package:mod_bloc/utils/constants/app_size.dart';
 
 class FileExplorerScreen extends StatefulWidget {
   const FileExplorerScreen({super.key});

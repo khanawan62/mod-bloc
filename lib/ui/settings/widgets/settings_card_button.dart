@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
-import '../../../utils/routes.dart';
+import '../../../utils/config/routes.dart';
 
 class SettingsCardButton extends StatelessWidget {
   final Icon icon;

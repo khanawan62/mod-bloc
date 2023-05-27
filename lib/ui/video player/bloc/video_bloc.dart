@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:video_player/video_player.dart';
 
-import '../../../utils/network_constants.dart';
+import '../../../utils/constants/network_constants.dart';
 
 part 'video_event.dart';
 part 'video_state.dart';

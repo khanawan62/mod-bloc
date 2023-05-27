@@ -14,8 +14,9 @@ import 'package:mod_bloc/ui/thumbnails/thumbnails_cubit.dart';
 import 'package:mod_bloc/ui/thumbnails/thumbnails_state.dart';
 import 'package:mod_bloc/ui/video%20player/bloc/video_bloc.dart';
 import 'package:mod_bloc/ui/video%20player/controls/bloc/controls_bloc.dart';
-import 'package:mod_bloc/utils/routes.dart';
+import 'package:mod_bloc/utils/config/routes.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mod_bloc/utils/config/theme.dart';
 void main() {
   Paint.enableDithering = true;
   ///above line will make color 
@@ -78,7 +79,7 @@ class Mod extends StatelessWidget {
             //   fontFamily: GoogleFonts.spaceGrotesk().fontFamily
             // )
             ///above code is left commented for
-            ///referecne purposes
+            ///reference purposes
           ),
             debugShowCheckedModeBanner: false,
             onGenerateRoute: Routes.generateRoutes),

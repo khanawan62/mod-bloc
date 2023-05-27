@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mod_bloc/ui/movies/See%20All%20Movies/see_all_movies_screen.dart';
 import 'package:mod_bloc/ui/thumbnails/thumbnails_cubit.dart';
-import 'package:mod_bloc/utils/app_size.dart';
+import 'package:mod_bloc/utils/constants/app_size.dart';
 import '../../repos/models/genre.dart';
-import '../../utils/routes.dart';
+import '../../utils/config/routes.dart';
 import '../shared/see_all_button.dart';
 
 class GenreList extends StatelessWidget {

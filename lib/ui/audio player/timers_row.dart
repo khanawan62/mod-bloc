@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:mod_bloc/ui/audio%20player/current_time.dart';
 import 'package:mod_bloc/ui/audio%20player/total_time.dart';
-import 'package:mod_bloc/utils/app_size.dart';
+import 'package:mod_bloc/utils/constants/app_size.dart';
 
 class TimersRow extends StatelessWidget {
   const TimersRow({super.key});

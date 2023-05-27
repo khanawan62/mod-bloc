@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:mod_bloc/repos/services/file_explorer_service.dart';
 import 'package:http/http.dart' as http;
-import '../../../utils/network_constants.dart';
+import '../../../utils/constants/network_constants.dart';
 
 part 'file_explorer_state.dart';
 

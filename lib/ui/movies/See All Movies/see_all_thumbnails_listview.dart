@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../repos/services/thumbnail_service.dart';
-import '../../../utils/app_size.dart';
-import '../../../utils/routes.dart';
+import '../../../utils/constants/app_size.dart';
+import '../../../utils/config/routes.dart';
 import '../../shared/see_all_button.dart';
 import '../../thumbnails/thumbnails_cubit.dart';
 import '../../video player/bloc/video_bloc.dart';

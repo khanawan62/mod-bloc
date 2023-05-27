@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mod_bloc/utils/app_size.dart';
+import 'package:mod_bloc/utils/constants/app_size.dart';
 import 'package:mod_bloc/utils/time_formatt.dart';
 import 'package:video_player/video_player.dart';
 

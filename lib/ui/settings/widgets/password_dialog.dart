@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mod_bloc/ui/settings/cubit/password_cubit.dart';
-import 'package:mod_bloc/utils/app_size.dart';
-import 'package:mod_bloc/utils/routes.dart';
+import 'package:mod_bloc/utils/constants/app_size.dart';
+import 'package:mod_bloc/utils/config/routes.dart';
 
 class PasswordDialog extends StatelessWidget {
   const PasswordDialog({super.key});

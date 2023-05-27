@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mod_bloc/ui/new%20audio%20player/widgets/audio_title.dart';
 import 'package:mod_bloc/ui/new%20audio%20player/widgets/genre_title.dart';
-import '../../../utils/app_size.dart';
+import '../../../utils/constants/app_size.dart';
 import 'new_timers_and_slider_row.dart';
 import 'primary_buttons_row.dart';
 import 'secondary_buttons_row.dart';

@@ -10,8 +10,8 @@ import 'package:mod_bloc/ui/shared/custom_spinner.dart';
 import 'package:mod_bloc/ui/thumbnails/thumbnails_cubit.dart';
 import 'package:mod_bloc/ui/thumbnails/thumbnails_state.dart';
 import 'package:mod_bloc/ui/video%20player/bloc/video_bloc.dart';
-import 'package:mod_bloc/utils/app_size.dart';
-import 'package:mod_bloc/utils/routes.dart';
+import 'package:mod_bloc/utils/constants/app_size.dart';
+import 'package:mod_bloc/utils/config/routes.dart';
 
 class ThumbnailsScreen extends StatelessWidget {
   const ThumbnailsScreen({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mod_bloc/repos/models/genre.dart';
 import 'package:mod_bloc/ui/movies/See%20All%20Movies/see_all_thumbnails_listview.dart';
-import 'package:mod_bloc/utils/app_size.dart';
+import 'package:mod_bloc/utils/constants/app_size.dart';
 
 class SeeAllBodyListview extends StatelessWidget {
   final List<Genre> genreList;

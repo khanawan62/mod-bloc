@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mod_bloc/ui/audio%20player/audio_player_event.dart';
 import 'package:mod_bloc/ui/audio%20player/audio_player_state.dart';
 
-import '../../utils/network_constants.dart';
+import '../../utils/constants/network_constants.dart';
 
 class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
   final AudioPlayer _audioplayer = AudioPlayer();

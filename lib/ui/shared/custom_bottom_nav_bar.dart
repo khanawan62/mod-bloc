@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mod_bloc/utils/app_size.dart';
-import 'package:mod_bloc/utils/routes.dart';
+import 'package:mod_bloc/utils/constants/app_size.dart';
+import 'package:mod_bloc/utils/config/routes.dart';
 
 class CustomNavBar extends StatelessWidget {
   final String screen;

@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../../utils/network_constants.dart';
+import '../../../utils/constants/network_constants.dart';
 
 part 'ebook_event.dart';
 part 'ebook_state.dart';

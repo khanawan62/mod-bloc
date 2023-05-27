@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../utils/routes.dart';
+import '../../utils/config/routes.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override

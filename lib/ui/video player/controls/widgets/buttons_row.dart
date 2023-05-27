@@ -7,7 +7,7 @@ import 'package:mod_bloc/ui/shared/custom_spinner.dart';
 import 'package:mod_bloc/ui/video%20player/bloc/video_bloc.dart';
 import 'package:mod_bloc/ui/video%20player/controls/bloc/controls_bloc.dart';
 import 'package:video_player/video_player.dart';
-import '../../../../utils/app_size.dart';
+import '../../../../utils/constants/app_size.dart';
 
 class ButtonsRow extends StatefulWidget {
   ///this widget is a row containg play, pause,

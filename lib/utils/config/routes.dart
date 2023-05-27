@@ -8,9 +8,9 @@ import 'package:mod_bloc/ui/settings/widgets/settings_screen.dart';
 import 'package:mod_bloc/ui/splash%20screen.dart/splash_screen.dart';
 import 'package:mod_bloc/ui/thumbnails/thumbnails_screen.dart';
 import 'package:mod_bloc/ui/video%20player/video_player_screen.dart';
-import '../ui/audio player/audio_player_screen.dart';
-import '../ui/audio/audio_screen.dart';
-import '../ui/movies/movies_screen.dart';
+import '../../ui/audio player/audio_player_screen.dart';
+import '../../ui/audio/audio_screen.dart';
+import '../../ui/movies/movies_screen.dart';
 
 class Routes {
   ///since splash screen is the first screen

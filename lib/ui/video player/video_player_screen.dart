@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mod_bloc/ui/video%20player/bloc/video_bloc.dart';
 import 'package:mod_bloc/ui/video%20player/controls/bloc/controls_bloc.dart';
 import 'package:mod_bloc/ui/video%20player/controls/widgets/video_player_appbar.dart';
-import 'package:mod_bloc/utils/app_size.dart';
+import 'package:mod_bloc/utils/constants/app_size.dart';
 import '../shared/custom_error_widget.dart';
 import '../shared/custom_spinner.dart';
 import 'controls/widgets/video_and_controls_stack.dart';

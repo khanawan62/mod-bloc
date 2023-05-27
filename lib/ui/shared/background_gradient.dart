@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mod_bloc/utils/config/theme.dart';
 
 class BackgroundGradient extends StatelessWidget {
   final Widget widgetChild;
@@ -12,11 +13,7 @@ class BackgroundGradient extends StatelessWidget {
             decoration: BoxDecoration(
                 gradient: LinearGradient(
               tileMode: TileMode.decal,
-              colors: [
-                HSLColor.fromColor(Colors.brown).withLightness(0.2).toColor(),
-                Colors.brown.shade400,
-                Colors.grey,
-              ],
+              colors: AppColors.scaffoldGradient
             )
             ),
             child: widgetChild);

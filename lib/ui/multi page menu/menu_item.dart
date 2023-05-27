@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../utils/routes.dart';
+import '../../utils/config/routes.dart';
 import '../thumbnails/thumbnails_cubit.dart';
 import 'multi_page_menu_screen.dart';
 

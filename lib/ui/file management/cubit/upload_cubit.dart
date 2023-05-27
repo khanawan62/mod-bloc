@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
-import 'package:mod_bloc/utils/network_constants.dart';
+import 'package:mod_bloc/utils/constants/network_constants.dart';
 part 'upload_state.dart';
 
 class UploadCubit extends Cubit<UploadState> {

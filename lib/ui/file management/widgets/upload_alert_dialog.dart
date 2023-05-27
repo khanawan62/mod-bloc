@@ -5,7 +5,7 @@ import 'package:mod_bloc/ui/file%20management/cubit/upload_cubit.dart';
 import 'package:mod_bloc/ui/file%20management/widgets/choose_files.dart';
 import 'package:mod_bloc/ui/file%20management/widgets/percentage_widget.dart';
 import 'package:mod_bloc/ui/file%20management/widgets/send_btn.dart';
-import 'package:mod_bloc/utils/app_size.dart';
+import 'package:mod_bloc/utils/constants/app_size.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 import '../cubit/file_explorer_cubit.dart';

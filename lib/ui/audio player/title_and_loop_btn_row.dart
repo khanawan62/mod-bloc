@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mod_bloc/ui/audio%20player/audio_player_bloc.dart';
 import 'package:mod_bloc/ui/audio%20player/audio_player_state.dart';
-import 'package:mod_bloc/utils/app_size.dart';
+import 'package:mod_bloc/utils/constants/app_size.dart';
 
 class TitleAndLoopBtnRow extends StatelessWidget {
   const TitleAndLoopBtnRow({super.key});
