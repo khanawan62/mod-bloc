@@ -43,10 +43,10 @@ class _NewAudioPlayerScreenState extends State<NewAudioPlayerScreen> {
                     Colors.grey.shade900
                   ]),
             ),
-            child: Center(
+            child: const Center(
               child: Row(
                 mainAxisSize: MainAxisSize.min,
-                children: const [LeftSideControls(), AudioThumbnail()],
+                children:  [LeftSideControls(), AudioThumbnail()],
               ),
             ),
           )),

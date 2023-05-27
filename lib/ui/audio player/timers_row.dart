@@ -13,9 +13,9 @@ class TimersRow extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: SizedBox(
             width: AppSize.screenWidth / 1.25,
-            child: Row(
+            child: const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
+              children: [
                 CurrentTime(),
                 Padding(
                   padding: EdgeInsets.only(right: 20),

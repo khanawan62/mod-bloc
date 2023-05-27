@@ -10,7 +10,6 @@ class PasswordCubit extends Cubit<PasswordState> {
 
   onPressedSubmit(String pswd) async {
     String password = await _settingsService.getSettingsPassword();
-    print (password);
     if (password == pswd) {
       emit(PasswordValid());
     } else {

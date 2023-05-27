@@ -4,10 +4,10 @@ class SeeAllButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 15),
+    return const Padding(
+      padding: EdgeInsets.only(right: 15),
       child: Row(
-        children: const [
+        children: [
           Text(
           "See All",
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),

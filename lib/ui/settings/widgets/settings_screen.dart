@@ -24,9 +24,9 @@ class SettingsScreen extends StatelessWidget {
             decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.all(Radius.circular(18))),
-            child: Column(
+            child: const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 SwitchButton(),
                 Divider(),
                 SettingsCardButton(
