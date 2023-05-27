@@ -38,8 +38,9 @@ class VideoSlider extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(
               horizontal: AppSize.screenWidth / 52.244898,
-              vertical: AppSize.screenHeight / 36.3636364),
+              vertical: AppSize.screenHeight / 34.3736364),
           child: LinearProgressIndicator(
+            minHeight: 1.5,
             value: maxBuffering / videoBloc.totalDuration,
             valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),
             backgroundColor: const Color.fromRGBO(128, 128, 128, 1),
@@ -48,7 +49,7 @@ class VideoSlider extends StatelessWidget {
         SliderTheme(
             data: const SliderThemeData(
               overlayColor: Colors.yellow,
-              trackHeight: 1,
+              trackHeight: 1.5,
 
               ///keeping track height as small as
               ///1 will make the buffering progress (linear progress indicator)
