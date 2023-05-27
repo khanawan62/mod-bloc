@@ -18,7 +18,9 @@ class NewAudioSlider extends StatelessWidget {
             return SliderTheme(
               data: SliderThemeData(
                 trackHeight: 1,
-                overlayShape: SliderComponentShape.noThumb),
+                overlayShape: SliderComponentShape.noThumb,
+                thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 7)
+                ),
               child: Slider.adaptive(
                 min: 0.0,
                 activeColor: Colors.red,

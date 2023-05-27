@@ -43,11 +43,11 @@ class LeftSideControls extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            Image.asset(
-              height: 100,
-              fit: BoxFit.fitHeight,
-              "images/giphy 3.gif",
-            ),
+            // Image.asset(
+            //   height: 100,
+            //   fit: BoxFit.fitHeight,
+            //   "images/giphy 3.gif",
+            // ),
           ],
         ),
       ),

@@ -30,9 +30,7 @@ class VideoSlider extends StatelessWidget {
         ),
         SliderTheme(
             data: const SliderThemeData(
-              overlayColor: Colors.yellow,
               trackHeight: 1.5,
-
               ///keeping track height as small as
               ///1 will make the buffering progress (linear progress indicator)
               ///show nicely
