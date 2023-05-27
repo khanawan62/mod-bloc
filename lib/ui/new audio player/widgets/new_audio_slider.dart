@@ -17,10 +17,10 @@ class NewAudioSlider extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.active) {
             return SliderTheme(
               data: SliderThemeData(
-                trackHeight: 1,
-                overlayShape: SliderComponentShape.noThumb,
-                thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 7)
-                ),
+                  trackHeight: 1,
+                  overlayShape: SliderComponentShape.noThumb,
+                  thumbShape:
+                      const RoundSliderThumbShape(enabledThumbRadius: 7)),
               child: Slider.adaptive(
                 min: 0.0,
                 activeColor: Colors.red,
@@ -47,16 +47,17 @@ class NewAudioSlider extends StatelessWidget {
                 },
               ),
             );
-          }
+          } 
           return SliderTheme(
             data: SliderThemeData(
-              trackHeight: 1,
-              overlayShape: SliderComponentShape.noThumb),
+                overlayShape: SliderComponentShape.noThumb,
+                thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 7),
+                trackHeight: 1),
             child: Slider.adaptive(
-              min: 0.0,
-                  activeColor: Colors.red,
-                  inactiveColor: Colors.white,
-              value: 0, onChanged: (d) {}),
+                activeColor: Colors.red,
+                inactiveColor: Colors.white,
+                value: 0,
+                onChanged: (_) {}),
           );
         },
       ),
