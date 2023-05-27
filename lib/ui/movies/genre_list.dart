@@ -70,7 +70,9 @@ class GenreList extends StatelessWidget {
                       child: Stack(
                         alignment: Alignment.bottomCenter,
                         children: [
-                          CachedNetworkImage(imageUrl: genres[idx].imgURL),
+                          CachedNetworkImage(
+                            placeholder: (context, url) => const SizedBox(),//this'll stop ui distorting
+                            imageUrl: genres[idx].imgURL),
                           Text(
                               genres[idx].title[0].toUpperCase() +
                                   genres[idx].title.substring(1),

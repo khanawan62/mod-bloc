@@ -15,12 +15,20 @@ import 'package:mod_bloc/ui/thumbnails/thumbnails_state.dart';
 import 'package:mod_bloc/ui/video%20player/bloc/video_bloc.dart';
 import 'package:mod_bloc/ui/video%20player/controls/bloc/controls_bloc.dart';
 import 'package:mod_bloc/utils/routes.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 void main() {
   Paint.enableDithering = true;
   ///above line will make color 
   ///gradients look smooth
-  runApp(RepositoryProvider(
+  runApp(const Mod());
+}
+
+class Mod extends StatelessWidget {
+  const Mod({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return RepositoryProvider(
       create: ((context) => ThumbnailService()),
       child: MultiBlocProvider(
         providers: [
@@ -59,8 +67,21 @@ void main() {
             create: (BuildContext context) => PasswordCubit(),
           ),
         ],
-        child: const MaterialApp(
+        child: MaterialApp(
+          ///poppins, inter seem good
+          ///quickSand is used for testing
+          theme: ThemeData(
+            textTheme: GoogleFonts.nunitoSansTextTheme(
+            )
+            // apply(
+            //   bodyColor: Colors.amber,
+            //   fontFamily: GoogleFonts.spaceGrotesk().fontFamily
+            // )
+            ///above code is left commented for
+            ///referecne purposes
+          ),
             debugShowCheckedModeBanner: false,
             onGenerateRoute: Routes.generateRoutes),
-      )));
+      ));
+  }
 }

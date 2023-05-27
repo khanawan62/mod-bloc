@@ -70,7 +70,8 @@ class MutliPageMenuItem extends StatelessWidget {
                     style: const TextStyle(
                         fontSize: 40,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white)),
+                        color: Colors.white
+                        )),
               ),
             ),
             Padding(

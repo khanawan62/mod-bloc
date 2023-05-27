@@ -9,7 +9,7 @@ import '../shared/see_all_button.dart';
 import '../thumbnails/thumbnails_cubit.dart';
 
 class GenreList extends StatelessWidget {
-   final String industry;
+  final String industry;
   final List<Genre> genres;
   const GenreList({super.key, required this.industry, required this.genres});
 
@@ -56,8 +56,7 @@ class GenreList extends StatelessWidget {
                         category: "audio",
                         industry: industry,
                         genre: genres[idx].title,
-                        screen: "audioScreen"
-                        );
+                        screen: "audioScreen");
                     Routes.pushNamed(Routes.thumbnailsScreen, context);
                   },
                   child: SizedBox(
@@ -66,7 +65,10 @@ class GenreList extends StatelessWidget {
                       child: Stack(
                         alignment: Alignment.bottomCenter,
                         children: [
-                          CachedNetworkImage(imageUrl: genres[idx].imgURL),
+                          CachedNetworkImage(
+                              placeholder: (context, url) =>
+                                  const SizedBox(), //this'll stop ui distorting
+                              imageUrl: genres[idx].imgURL),
                           Text(
                               genres[idx].title[0].toUpperCase() +
                                   genres[idx].title.substring(1),
