@@ -23,10 +23,10 @@ class Controls extends StatelessWidget {
     return BlocBuilder<ControlsBloc, ControlsState>(builder: (context, state) {
       if (state is ControlsShown) {
         return AnimatedSwitcher(
-          duration: const Duration(milliseconds: 300),
+          duration: const Duration(milliseconds: 350),
           child: Container(
             color: Colors.black26,
-            key: const Key("showing"),
+            key: const Key("containerKey"),
             ///when the controls are shown,
             ///the background color is slightly
             ///set to black color to make the
@@ -47,11 +47,9 @@ class Controls extends StatelessWidget {
         );
       }
       return const AnimatedSwitcher(
-          duration: Duration(milliseconds: 300), child: SizedBox(
-            key:  Key("hiding"),
+          duration: Duration(milliseconds: 350), child: SizedBox(
+            key: Key("boxKey"),
             //without this key, animation won't work
-            height: double.infinity,
-            width: double.infinity,
           ));
     });
   }
