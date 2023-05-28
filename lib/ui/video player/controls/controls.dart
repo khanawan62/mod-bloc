@@ -22,27 +22,37 @@ class Controls extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ControlsBloc, ControlsState>(builder: (context, state) {
       if (state is ControlsShown) {
-        return Container(
-          color: Colors.black26,
-          ///when the controls are shown,
-          ///the background color is slightly
-          ///set to black color to make the 
-          ///white controls look more visible
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Spacer(),
-              const SizedBox(height: 50),
-              ButtonsRow(controller: controller),
-              const Spacer(),
-              TimersRow(controller: controller),
-              VideoSlider(controller: controller),
-              const SizedBox(height: 50)
-            ],
+        return AnimatedSwitcher(
+          duration: const Duration(milliseconds: 300),
+          child: Container(
+            color: Colors.black26,
+            key: const Key("showing"),
+            ///when the controls are shown,
+            ///the background color is slightly
+            ///set to black color to make the
+            ///white controls look more visible
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Spacer(),
+                const SizedBox(height: 50),
+                ButtonsRow(controller: controller),
+                const Spacer(),
+                TimersRow(controller: controller),
+                VideoSlider(controller: controller),
+                const SizedBox(height: 50)
+              ],
+            ),
           ),
         );
       }
-      return const SizedBox();
+      return const AnimatedSwitcher(
+          duration: Duration(milliseconds: 300), child: SizedBox(
+            key:  Key("hiding"),
+            //without this key, animation won't work
+            height: double.infinity,
+            width: double.infinity,
+          ));
     });
   }
 }

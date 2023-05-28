@@ -16,7 +16,6 @@ import 'package:mod_bloc/ui/video%20player/bloc/video_bloc.dart';
 import 'package:mod_bloc/ui/video%20player/controls/bloc/controls_bloc.dart';
 import 'package:mod_bloc/utils/config/routes.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mod_bloc/utils/config/theme.dart';
 void main() {
   Paint.enableDithering = true;
   ///above line will make color 
