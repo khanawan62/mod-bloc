@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mod_bloc/cubit/internet_cubit.dart';
 import 'package:mod_bloc/repos/services/thumbnail_service.dart';
 import 'package:mod_bloc/ui/audio%20player/audio_player_bloc.dart';
 import 'package:mod_bloc/ui/audio/audio_cubit.dart';
@@ -65,6 +66,9 @@ class Mod extends StatelessWidget {
           ),
           BlocProvider<PasswordCubit>(
             create: (BuildContext context) => PasswordCubit(),
+          ),
+          BlocProvider<InternetCubit>(
+            create: (BuildContext context) => InternetCubit(),
           ),
         ],
         child: MaterialApp(

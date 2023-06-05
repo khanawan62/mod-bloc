@@ -17,6 +17,8 @@ class VideoPlayerAppbar extends StatelessWidget implements PreferredSizeWidget {
           return AnimatedSwitcher(
             duration: const Duration(milliseconds: 350),
             child: BlocBuilder<VideoBloc, VideoState>(
+              ///animated switcher will only work in this 
+              ///(inner) bloc and work in outer bloc
               key: const Key("blocKey"),
                 buildWhen: (p, c) => c is VideoLoaded ? true : false,
                 builder: (context, state) {

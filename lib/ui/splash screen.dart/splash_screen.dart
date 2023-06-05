@@ -33,62 +33,49 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: BackgroundGradient(
-          widgetChild: BlocConsumer<ConnectionCubit, APIConnectionState>(
-              builder: (context, state) {
-                if (state is ConnectingState) {
-                  return Center(
-                child: 
-                LinearPercentIndicator(
-                width: AppSize.screenHeight / 2,
-                lineHeight: 14.0,
-                percent: state.percentage /100,
-                backgroundColor: Colors.grey,
-                progressColor: Colors.blue,
-                trailing: Text("${state.percentage.toString().split(".").first}%",
-                    style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white)
-                        ),
-                leading: const Text("Connecting to server",
-                    style:  TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white)
-                        ),
-              )
-                // CircularPercentIndicator(
-                //   progressColor: Colors.teal,
-                //   percent: state.percentage /100,
-                //   center: Text("Connecting to server ${state.percentage.toString().split(".").first}%",
-                //     style: const TextStyle(
-                //         fontSize: 20,
-                //         fontWeight: FontWeight.bold,
-                //         color: Colors.white)
-                //         ),
-                //   radius: 180)
-                        );
-                } 
-            return const Center(
-                child: Text("Connecting to server...",
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white)));
-          }, listener: (context, state) {
-            if (state is HasConnectionState) {
-              context.read<ConnectionCubit>().close();
-               Routes.pushNamedAndReplace(Routes.index, context);
-             // Routes.pushNamedAndReplace(Routes.fileExplorerScreen, context);
-            }
-            if (state is ConnectionTimedOutState) {
-              context.read<ConnectionCubit>().close();
-              Routes.pushNamedAndReplace(Routes.gamesScreen, context);
-        
-              ///replace above line with games screen
-              ///since games screen should open on timed out
-            }
-          }),
-        ));
+      widgetChild: BlocConsumer<ConnectionCubit, APIConnectionState>(
+          builder: (context, state) {
+        if (state is ConnectingState) {
+          return Center(
+              child: LinearPercentIndicator(
+            width: AppSize.screenHeight / 2,
+            lineHeight: 14.0,
+            percent: state.percentage / 100,
+            backgroundColor: Colors.grey,
+            progressColor: Colors.blue,
+            trailing: Text("${state.percentage.toString().split(".").first}%",
+                style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white)),
+            leading: const Text("Connecting to server",
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white)),
+          )
+              );
+        }
+        return const Center(
+            child: Text("Connecting to server...",
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white)));
+      }, listener: (context, state) {
+        if (state is HasConnectionState) {
+          context.read<ConnectionCubit>().close();
+          //Routes.pushNamedAndReplace(Routes.index, context);
+           Routes.pushNamedAndReplace(Routes.feedbackScreen, context);
+        }
+        if (state is ConnectionTimedOutState) {
+          context.read<ConnectionCubit>().close();
+          Routes.pushNamedAndReplace(Routes.gamesScreen, context);
+
+          ///replace above line with games screen
+          ///since games screen should open on timed out
+        }
+      }),
+    ));
   }
 }

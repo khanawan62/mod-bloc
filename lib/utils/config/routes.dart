@@ -10,6 +10,7 @@ import 'package:mod_bloc/ui/thumbnails/thumbnails_screen.dart';
 import 'package:mod_bloc/ui/video%20player/video_player_screen.dart';
 import '../../ui/audio player/audio_player_screen.dart';
 import '../../ui/audio/audio_screen.dart';
+import '../../ui/feedback/feedback_screen.dart';
 import '../../ui/movies/movies_screen.dart';
 
 class Routes {
@@ -28,6 +29,7 @@ class Routes {
   static const String fileExplorerScreen = "/fileExplorerScreen";
   static const String settingsScreen = "/settingsScreen";
   static const String gamesScreen = "/gamesScreen";
+  static const String feedbackScreen = "/feedbackScreen";
   //static const String testVideoPlayerScreen = "/testVideoPlayerScreen";
   static const String index = "/home";
 
@@ -90,6 +92,9 @@ class Routes {
       case gamesScreen:
         return CupertinoPageRoute(
             builder: (_) => const GamesScreen(), settings: settings);
+      case feedbackScreen:
+        return CupertinoPageRoute(
+            builder: (_) => const FeedbackScreen(), settings: settings);
       // case seeAllMoviesScreen:
       //   return CupertinoPageRoute(
       //       builder: (_) => const SeeAllMoviesScreen(), settings: settings);
